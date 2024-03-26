@@ -743,8 +743,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/katussska/Private/github/Coinshen/cmake-build-debug",
-		"source" : "/home/katussska/Private/github/Coinshen"
+		"build" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug",
+		"source" : "/home/katussska/Private/github/Coinshen/lib"
 	},
 	"version" : 
 	{
