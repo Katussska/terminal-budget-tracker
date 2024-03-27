@@ -5,6 +5,7 @@
 #ifndef PROJECT_FINANCIALENTITY_H
 #define PROJECT_FINANCIALENTITY_H
 
+#include <SQLiteCpp/SQLiteCpp.h>
 #include <iostream>
 #include <string>
 #include <vector>
