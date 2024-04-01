@@ -12,6 +12,6 @@
 **/sqlite
 
 # Ignore specific CMake generated files
-#lib/**/CMakeLists.txt
-#lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake
-#lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake
+lib/**/CMakeLists.txt
+lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake
+lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake
