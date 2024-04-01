@@ -7,49 +7,43 @@
 
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include <utility>
 #include <sqlite3.h>
 #include <ctime>
 
-class FinancialEntity {
-protected:
-    std::string name;
-    double money{}; // for Category amount money spent in it, for Account its balance
-
-public:
-    explicit FinancialEntity(std::string &&name)
-            : name(name) {}
-
-    FinancialEntity(std::string &&name, double amount)
-            : name(name), money(amount) {}
-
-    std::string getName() const;
-
-    void setName(const std::string &newName);
-
-    double getAmount() const;
-
-};
-
-class Category : public FinancialEntity {
+class Category {
 private:
-    double budget{};
-    bool budgetSet = false;
+    std::string name;
+    double limit;
+    bool limitSet = false;
 public:
     Category(const std::string name);
 
     Category(const std::string name, double limit);
+
+    std::string getName() const;
+
+    void setName(const std::string &newName);
 
     double getLimit() const;
 
     void setLimit(double newLimit);
 };
 
-class Account : public FinancialEntity {
+class Account {
+    std::string name;
+    double balance;
 public:
     Account(const std::string name, double balance);
+
+    std::string getName() const;
+
+    void setName(const std::string &newName);
+
+    double getBalance();
 
     void setBalance(double newBalance);
 

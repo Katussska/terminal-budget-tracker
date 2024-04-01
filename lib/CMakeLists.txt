@@ -4,9 +4,9 @@ project(Coinshen)
 set(CMAKE_CXX_STANDARD 17)
 
 # Add SQLiteCpp library
-add_subdirectory(SQLiteCpp)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/deps/SQLiteCpp)
 
-# Add your library
+# Add your library dopsat vsevhny .cpp
 add_library(lib STATIC src/BudgetTracker.cpp)
 
 # Include directories for your library
@@ -15,4 +15,8 @@ target_include_directories(lib PUBLIC
 )
 
 # Link SQLiteCpp library to your library
-target_link_libraries(lib PUBLIC SQLiteCpp sqlite3)
+target_link_libraries(lib PUBLIC SQLiteCpp sqlite3 pthread dl)
+
+add_executable(main src/main.cpp)
+
+target_link_libraries(main lib)
