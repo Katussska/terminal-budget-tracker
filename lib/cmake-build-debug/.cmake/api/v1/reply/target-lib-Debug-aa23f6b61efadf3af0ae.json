@@ -33,13 +33,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 18,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 13,
+				"line" : 17,
 				"parent" : 0
 			}
 		]
@@ -64,7 +64,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/katussska/Private/github/Coinshen/lib/LIB/include"
+					"path" : "/home/katussska/Private/github/Coinshen/lib/include"
 				},
 				{
 					"backtrace" : 2,
@@ -86,7 +86,9 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		}
 	],
@@ -94,11 +96,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "sqlite3::@c80ffdcefb5a3ea85181"
+			"id" : "sqlite3::@ef8d2432919d5815a33b"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "SQLiteCpp::@b3e46b118274d1e88986"
+			"id" : "SQLiteCpp::@c4ad3082be7f80507f5b"
 		}
 	],
 	"id" : "lib::@6890427a1f51a3e7e1df",
@@ -115,7 +117,9 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2
 			]
 		}
 	],
@@ -124,7 +128,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/BudgetTracker.cpp",
+			"path" : "lib/src/FinancialEntity.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "lib/src/Transaction.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "lib/src/BudgetTracker.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

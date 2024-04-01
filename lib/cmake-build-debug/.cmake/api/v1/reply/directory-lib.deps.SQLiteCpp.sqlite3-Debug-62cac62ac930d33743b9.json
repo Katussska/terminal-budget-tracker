@@ -7,7 +7,7 @@
 		],
 		"files" : 
 		[
-			"deps/SQLiteCpp/sqlite3/CMakeLists.txt"
+			"lib/deps/SQLiteCpp/sqlite3/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -36,9 +36,9 @@
 			"destination" : "lib64",
 			"paths" : 
 			[
-				"deps/SQLiteCpp/sqlite3/libsqlite3.a"
+				"lib/deps/SQLiteCpp/sqlite3/libsqlite3.a"
 			],
-			"targetId" : "sqlite3::@c80ffdcefb5a3ea85181",
+			"targetId" : "sqlite3::@ef8d2432919d5815a33b",
 			"targetIndex" : 4,
 			"type" : "target"
 		},
@@ -48,14 +48,14 @@
 			"destination" : "include",
 			"paths" : 
 			[
-				"deps/SQLiteCpp/sqlite3/sqlite3.h"
+				"lib/deps/SQLiteCpp/sqlite3/sqlite3.h"
 			],
 			"type" : "file"
 		}
 	],
 	"paths" : 
 	{
-		"build" : "deps/SQLiteCpp/sqlite3",
-		"source" : "deps/SQLiteCpp/sqlite3"
+		"build" : "lib/deps/SQLiteCpp/sqlite3",
+		"source" : "lib/deps/SQLiteCpp/sqlite3"
 	}
 }

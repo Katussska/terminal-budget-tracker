@@ -8,7 +8,7 @@
 		],
 		"files" : 
 		[
-			"deps/SQLiteCpp/CMakeLists.txt"
+			"lib/deps/SQLiteCpp/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -23,12 +23,12 @@
 			}
 		]
 	},
-	"id" : "SQLiteCpp_cpplint::@b3e46b118274d1e88986",
+	"id" : "SQLiteCpp_cpplint::@c4ad3082be7f80507f5b",
 	"name" : "SQLiteCpp_cpplint",
 	"paths" : 
 	{
-		"build" : "deps/SQLiteCpp",
-		"source" : "deps/SQLiteCpp"
+		"build" : "lib/deps/SQLiteCpp",
+		"source" : "lib/deps/SQLiteCpp"
 	},
 	"sourceGroups" : 
 	[
@@ -52,13 +52,13 @@
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
-			"path" : "lib/cmake-build-debug/deps/SQLiteCpp/CMakeFiles/SQLiteCpp_cpplint",
+			"path" : "lib/cmake-build-debug/lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp_cpplint",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "lib/cmake-build-debug/deps/SQLiteCpp/CMakeFiles/SQLiteCpp_cpplint.rule",
+			"path" : "lib/cmake-build-debug/lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp_cpplint.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

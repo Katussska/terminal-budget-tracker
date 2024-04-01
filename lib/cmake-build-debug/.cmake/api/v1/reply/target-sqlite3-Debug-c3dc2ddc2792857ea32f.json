@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "deps/SQLiteCpp/sqlite3/libsqlite3.a"
+			"path" : "lib/deps/SQLiteCpp/sqlite3/libsqlite3.a"
 		}
 	],
 	"backtrace" : 1,
@@ -20,8 +20,8 @@
 		],
 		"files" : 
 		[
-			"deps/SQLiteCpp/sqlite3/CMakeLists.txt",
-			"deps/SQLiteCpp/CMakeLists.txt"
+			"lib/deps/SQLiteCpp/sqlite3/CMakeLists.txt",
+			"lib/deps/SQLiteCpp/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -130,7 +130,7 @@
 			]
 		}
 	],
-	"id" : "sqlite3::@c80ffdcefb5a3ea85181",
+	"id" : "sqlite3::@ef8d2432919d5815a33b",
 	"install" : 
 	{
 		"destinations" : 
@@ -149,8 +149,8 @@
 	"nameOnDisk" : "libsqlite3.a",
 	"paths" : 
 	{
-		"build" : "deps/SQLiteCpp/sqlite3",
-		"source" : "deps/SQLiteCpp/sqlite3"
+		"build" : "lib/deps/SQLiteCpp/sqlite3",
+		"source" : "lib/deps/SQLiteCpp/sqlite3"
 	},
 	"sourceGroups" : 
 	[
@@ -174,12 +174,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/sqlite3/sqlite3.c",
+			"path" : "lib/deps/SQLiteCpp/sqlite3/sqlite3.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/sqlite3/sqlite3.h",
+			"path" : "lib/deps/SQLiteCpp/sqlite3/sqlite3.h",
 			"sourceGroupIndex" : 1
 		}
 	],

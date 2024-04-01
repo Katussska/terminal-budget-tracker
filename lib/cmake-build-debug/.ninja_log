@@ -1,0 +1,23 @@
+# ninja log v5
+1	245	1711976391827040630	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Exception.cpp.o	68358d4745d4c801
+1	514	1711976392096042025	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Column.cpp.o	ad53440b1256d251
+1	618	1711976392200042564	CMakeFiles/main.dir/lib/src/main.cpp.o	a8b3f884cf539a15
+1	649	1711976392231042725	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Database.cpp.o	e366aea7ec87d0d9
+2	671	1711976392253042839	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Statement.cpp.o	8dfda5fa8ffbb8d9
+1	706	1711976392288043021	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Backup.cpp.o	fccbbfdfc0d2aea1
+1	742	1711976392325043213	CMakeFiles/lib.dir/lib/src/FinancialEntity.cpp.o	7eaaf5a4e2811d
+1	782	1711976392364043415	CMakeFiles/lib.dir/lib/src/Transaction.cpp.o	6705b7150a10c314
+1	787	1711976392370043446	CMakeFiles/lib.dir/lib/src/BudgetTracker.cpp.o	d7314af5ff69b57
+1	801	1711976392383043513	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Savepoint.cpp.o	604d78503baf3718
+246	842	1711976392425043731	lib/deps/SQLiteCpp/CMakeFiles/SQLiteCpp.dir/src/Transaction.cpp.o	c6978c8dd3c26723
+514	3229	1711976394807056084	lib/deps/SQLiteCpp/sqlite3/CMakeFiles/sqlite3.dir/sqlite3.c.o	1af47fdcc58aa2eb
+3229	3264	1711976394842056266	lib/deps/SQLiteCpp/sqlite3/libsqlite3.a	b8b593f1dba5772d
+3264	3299	1711976394878056452	lib/deps/SQLiteCpp/libSQLiteCpp.a	2ff4e89cac67bf7a
+3300	3319	1711976394900056567	liblib.a	d5d98d5f33b65988
+3319	3382	1711976394963056894	main	5ce3e741c06893db
+0	393	1711976508275656625	CMakeFiles/lib.dir/lib/src/BudgetTracker.cpp.o	d7314af5ff69b57
+0	403	1711976508285656679	CMakeFiles/lib.dir/lib/src/Transaction.cpp.o	6705b7150a10c314
+1	422	1711976508304656781	CMakeFiles/main.dir/lib/src/main.cpp.o	a8b3f884cf539a15
+0	463	1711976508345657001	CMakeFiles/lib.dir/lib/src/FinancialEntity.cpp.o	7eaaf5a4e2811d
+463	482	1711976508362657093	liblib.a	d5d98d5f33b65988
+482	547	1711976508427657442	main	5ce3e741c06893db

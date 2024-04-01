@@ -6,6 +6,7 @@
 #define PROJECT_FINANCIALENTITY_H
 
 #include <SQLiteCpp/SQLiteCpp.h>
+#include <filesystem>
 #include <iostream>
 #include <fstream>
 #include <string>

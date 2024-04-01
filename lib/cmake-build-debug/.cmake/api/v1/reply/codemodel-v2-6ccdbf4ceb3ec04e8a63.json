@@ -25,20 +25,20 @@
 					]
 				},
 				{
-					"build" : "deps/SQLiteCpp",
+					"build" : "lib/deps/SQLiteCpp",
 					"childIndexes" : 
 					[
 						2
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-deps.SQLiteCpp-Debug-f96b1f48e80fbdf98ef2.json",
+					"jsonFile" : "directory-lib.deps.SQLiteCpp-Debug-9ba0880c9163410fbbbc.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 1,
-					"source" : "deps/SQLiteCpp",
+					"source" : "lib/deps/SQLiteCpp",
 					"targetIndexes" : 
 					[
 						0,
@@ -46,16 +46,16 @@
 					]
 				},
 				{
-					"build" : "deps/SQLiteCpp/sqlite3",
+					"build" : "lib/deps/SQLiteCpp/sqlite3",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-deps.SQLiteCpp.sqlite3-Debug-5ad2eb5c6dbbf1a7a018.json",
+					"jsonFile" : "directory-lib.deps.SQLiteCpp.sqlite3-Debug-62cac62ac930d33743b9.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
 					},
 					"parentIndex" : 1,
 					"projectIndex" : 1,
-					"source" : "deps/SQLiteCpp/sqlite3",
+					"source" : "lib/deps/SQLiteCpp/sqlite3",
 					"targetIndexes" : 
 					[
 						4
@@ -101,36 +101,36 @@
 			[
 				{
 					"directoryIndex" : 1,
-					"id" : "SQLiteCpp::@b3e46b118274d1e88986",
-					"jsonFile" : "target-SQLiteCpp-Debug-938e6f7e967517bb07a9.json",
+					"id" : "SQLiteCpp::@c4ad3082be7f80507f5b",
+					"jsonFile" : "target-SQLiteCpp-Debug-1e38e172929630d15df8.json",
 					"name" : "SQLiteCpp",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 1,
-					"id" : "SQLiteCpp_cpplint::@b3e46b118274d1e88986",
-					"jsonFile" : "target-SQLiteCpp_cpplint-Debug-96a49a34fbe991b5fd46.json",
+					"id" : "SQLiteCpp_cpplint::@c4ad3082be7f80507f5b",
+					"jsonFile" : "target-SQLiteCpp_cpplint-Debug-b656eff833c47785be28.json",
 					"name" : "SQLiteCpp_cpplint",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "lib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lib-Debug-99355e765dc1ce29e766.json",
+					"jsonFile" : "target-lib-Debug-aa23f6b61efadf3af0ae.json",
 					"name" : "lib",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-61a3e5784c838e1e1492.json",
+					"jsonFile" : "target-main-Debug-17011950f42dad22bdf0.json",
 					"name" : "main",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
-					"id" : "sqlite3::@c80ffdcefb5a3ea85181",
-					"jsonFile" : "target-sqlite3-Debug-04eb1f10c84da896e9f6.json",
+					"id" : "sqlite3::@ef8d2432919d5815a33b",
+					"jsonFile" : "target-sqlite3-Debug-c3dc2ddc2792857ea32f.json",
 					"name" : "sqlite3",
 					"projectIndex" : 1
 				}
@@ -140,8 +140,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/katussska/Private/github/Coinshen/lib/lib/cmake-build-debug",
-		"source" : "/home/katussska/Private/github/Coinshen/lib"
+		"build" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug",
+		"source" : "/home/katussska/Private/github/Coinshen"
 	},
 	"version" : 
 	{

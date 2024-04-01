@@ -67,7 +67,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/katussska/Private/github/Coinshen/lib/lib/cmake-build-debug"
+			"value" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -555,7 +555,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/katussska/Private/github/Coinshen/lib/lib/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -627,7 +627,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/katussska/Private/github/Coinshen/lib"
+			"value" : "/home/katussska/Private/github/Coinshen"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1503,7 +1503,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/katussska/Private/github/Coinshen/lib/lib/cmake-build-debug"
+			"value" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug"
 		},
 		{
 			"name" : "Coinshen_IS_TOP_LEVEL",
@@ -1527,7 +1527,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/katussska/Private/github/Coinshen/lib"
+			"value" : "/home/katussska/Private/github/Coinshen"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp",
@@ -1807,7 +1807,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/katussska/Private/github/Coinshen/lib/lib/cmake-build-debug/deps/SQLiteCpp"
+			"value" : "/home/katussska/Private/github/Coinshen/lib/cmake-build-debug/lib/deps/SQLiteCpp"
 		},
 		{
 			"name" : "SQLiteCpp_IS_TOP_LEVEL",

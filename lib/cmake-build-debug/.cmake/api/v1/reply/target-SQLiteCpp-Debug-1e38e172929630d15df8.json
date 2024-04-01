@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "deps/SQLiteCpp/libSQLiteCpp.a"
+			"path" : "lib/deps/SQLiteCpp/libSQLiteCpp.a"
 		}
 	],
 	"backtrace" : 1,
@@ -20,7 +20,7 @@
 		],
 		"files" : 
 		[
-			"deps/SQLiteCpp/CMakeLists.txt"
+			"lib/deps/SQLiteCpp/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -124,10 +124,10 @@
 	[
 		{
 			"backtrace" : 3,
-			"id" : "sqlite3::@c80ffdcefb5a3ea85181"
+			"id" : "sqlite3::@ef8d2432919d5815a33b"
 		}
 	],
-	"id" : "SQLiteCpp::@b3e46b118274d1e88986",
+	"id" : "SQLiteCpp::@c4ad3082be7f80507f5b",
 	"install" : 
 	{
 		"destinations" : 
@@ -146,8 +146,8 @@
 	"nameOnDisk" : "libSQLiteCpp.a",
 	"paths" : 
 	{
-		"build" : "deps/SQLiteCpp",
-		"source" : "deps/SQLiteCpp"
+		"build" : "lib/deps/SQLiteCpp",
+		"source" : "lib/deps/SQLiteCpp"
 	},
 	"sourceGroups" : 
 	[
@@ -218,193 +218,193 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Backup.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Backup.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Column.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Column.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Database.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Database.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Exception.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Exception.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Savepoint.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Savepoint.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Statement.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Statement.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "deps/SQLiteCpp/src/Transaction.cpp",
+			"path" : "lib/deps/SQLiteCpp/src/Transaction.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/SQLiteCpp.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/SQLiteCpp.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Assertion.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Assertion.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Backup.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Backup.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Column.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Column.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Database.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Database.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Exception.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Exception.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Savepoint.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Savepoint.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Statement.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Statement.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/Transaction.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/Transaction.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/VariadicBind.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/VariadicBind.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/include/SQLiteCpp/ExecuteMany.h",
+			"path" : "lib/deps/SQLiteCpp/include/SQLiteCpp/ExecuteMany.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/README.md",
+			"path" : "lib/deps/SQLiteCpp/README.md",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/LICENSE.txt",
+			"path" : "lib/deps/SQLiteCpp/LICENSE.txt",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/CHANGELOG.md",
+			"path" : "lib/deps/SQLiteCpp/CHANGELOG.md",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/TODO.txt",
+			"path" : "lib/deps/SQLiteCpp/TODO.txt",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.editorconfig",
+			"path" : "lib/deps/SQLiteCpp/.editorconfig",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.gitbugtraq",
+			"path" : "lib/deps/SQLiteCpp/.gitbugtraq",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.github/workflows/cmake.yml",
+			"path" : "lib/deps/SQLiteCpp/.github/workflows/cmake.yml",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.github/workflows/cmake_subdir_example.yml",
+			"path" : "lib/deps/SQLiteCpp/.github/workflows/cmake_subdir_example.yml",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.github/workflows/meson.yml",
+			"path" : "lib/deps/SQLiteCpp/.github/workflows/meson.yml",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.gitignore",
+			"path" : "lib/deps/SQLiteCpp/.gitignore",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.gitmodules",
+			"path" : "lib/deps/SQLiteCpp/.gitmodules",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/.travis.yml",
+			"path" : "lib/deps/SQLiteCpp/.travis.yml",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/appveyor.yml",
+			"path" : "lib/deps/SQLiteCpp/appveyor.yml",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/build.bat",
+			"path" : "lib/deps/SQLiteCpp/build.bat",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/build.sh",
+			"path" : "lib/deps/SQLiteCpp/build.sh",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/cpplint.py",
+			"path" : "lib/deps/SQLiteCpp/cpplint.py",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/Doxyfile",
+			"path" : "lib/deps/SQLiteCpp/Doxyfile",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/cmake/FindSQLite3.cmake",
+			"path" : "lib/deps/SQLiteCpp/cmake/FindSQLite3.cmake",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 1,
-			"path" : "deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake.in",
+			"path" : "lib/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake.in",
 			"sourceGroupIndex" : 3
 		}
 	],

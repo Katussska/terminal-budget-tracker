@@ -25,19 +25,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 20,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
 				"line" : 22,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 18,
 				"parent" : 0
 			}
 		]
@@ -62,7 +62,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/katussska/Private/github/Coinshen/lib/LIB/include"
+					"path" : "/home/katussska/Private/github/Coinshen/lib/include"
 				},
 				{
 					"backtrace" : 2,
@@ -92,11 +92,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "sqlite3::@c80ffdcefb5a3ea85181"
+			"id" : "sqlite3::@ef8d2432919d5815a33b"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "SQLiteCpp::@b3e46b118274d1e88986"
+			"id" : "SQLiteCpp::@c4ad3082be7f80507f5b"
 		},
 		{
 			"backtrace" : 2,
@@ -123,12 +123,12 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "deps/SQLiteCpp/libSQLiteCpp.a",
+				"fragment" : "lib/deps/SQLiteCpp/libSQLiteCpp.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "deps/SQLiteCpp/sqlite3/libsqlite3.a",
+				"fragment" : "lib/deps/SQLiteCpp/sqlite3/libsqlite3.a",
 				"role" : "libraries"
 			},
 			{
@@ -166,7 +166,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/main.cpp",
+			"path" : "lib/src/main.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

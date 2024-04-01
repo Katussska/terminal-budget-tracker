@@ -7,7 +7,7 @@
 		],
 		"files" : 
 		[
-			"deps/SQLiteCpp/CMakeLists.txt"
+			"lib/deps/SQLiteCpp/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -54,9 +54,9 @@
 			"destination" : "lib64",
 			"paths" : 
 			[
-				"deps/SQLiteCpp/libSQLiteCpp.a"
+				"lib/deps/SQLiteCpp/libSQLiteCpp.a"
 			],
-			"targetId" : "SQLiteCpp::@b3e46b118274d1e88986",
+			"targetId" : "SQLiteCpp::@c4ad3082be7f80507f5b",
 			"targetIndex" : 0,
 			"type" : "target"
 		},
@@ -67,7 +67,7 @@
 			"paths" : 
 			[
 				{
-					"from" : "deps/SQLiteCpp/include",
+					"from" : "lib/deps/SQLiteCpp/include",
 					"to" : "."
 				}
 			],
@@ -81,17 +81,17 @@
 			"exportTargets" : 
 			[
 				{
-					"id" : "sqlite3::@c80ffdcefb5a3ea85181",
+					"id" : "sqlite3::@ef8d2432919d5815a33b",
 					"index" : 4
 				},
 				{
-					"id" : "SQLiteCpp::@b3e46b118274d1e88986",
+					"id" : "SQLiteCpp::@c4ad3082be7f80507f5b",
 					"index" : 0
 				}
 			],
 			"paths" : 
 			[
-				"deps/SQLiteCpp/CMakeFiles/Export/fe6d37657db76c11acbdfa7d9655154a/SQLiteCppTargets.cmake"
+				"lib/deps/SQLiteCpp/CMakeFiles/Export/fe6d37657db76c11acbdfa7d9655154a/SQLiteCppTargets.cmake"
 			],
 			"type" : "export"
 		},
@@ -101,7 +101,7 @@
 			"destination" : "share/SQLiteCpp",
 			"paths" : 
 			[
-				"deps/SQLiteCpp/package.xml"
+				"lib/deps/SQLiteCpp/package.xml"
 			],
 			"type" : "file"
 		},
@@ -111,15 +111,15 @@
 			"destination" : "lib64/cmake/SQLiteCpp",
 			"paths" : 
 			[
-				"lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake",
-				"lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake"
+				"lib/cmake-build-debug/lib/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake",
+				"lib/cmake-build-debug/lib/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake"
 			],
 			"type" : "file"
 		}
 	],
 	"paths" : 
 	{
-		"build" : "deps/SQLiteCpp",
-		"source" : "deps/SQLiteCpp"
+		"build" : "lib/deps/SQLiteCpp",
+		"source" : "lib/deps/SQLiteCpp"
 	}
 }
