@@ -11,6 +11,8 @@ add_library(lib STATIC
         lib/src/FinancialEntity.cpp
         lib/src/Transaction.cpp
         lib/src/BudgetTracker.cpp
+        lib/db/CRUD.cpp
+        lib/db/seed.cpp
 )
 
 # Include directories for your library
