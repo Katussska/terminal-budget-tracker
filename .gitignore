@@ -1,18 +1,17 @@
 # Ignore CMake build directory
-/CMakeFiles
-/CMakeScripts
-/cmake_install.cmake
-/CMakeCache.txt
-/CMakeLists.txt.user
-/Testing
-/compile_commands.json
-/CTestTestfile.cmake
+**/CMakeFiles
+**/CMakeScripts
+**/cmake_install.cmake
+**/CMakeCache.txt
+**/CMakeLists.txt.user
+**/Testing
+**/compile_commands.json
+**/CTestTestfile.cmake
 
 # Ignore SQLite build directory
-/sqlite
+**/sqlite
 
 # Ignore specific CMake generated files
-lib/CMakeLists.txt
-lib/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake
-lib/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake
-
+#lib/**/CMakeLists.txt
+#lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake
+#lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake
