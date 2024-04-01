@@ -7,11 +7,7 @@
 **/Testing
 **/compile_commands.json
 **/CTestTestfile.cmake
+**/cmake-build-debug
 
 # Ignore SQLite build directory
 **/sqlite
-
-# Ignore specific CMake generated files
-lib/**/CMakeLists.txt
-lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfig.cmake
-lib/**/lib/cmake-build-debug/deps/SQLiteCpp/cmake/SQLiteCppConfigVersion.cmake
