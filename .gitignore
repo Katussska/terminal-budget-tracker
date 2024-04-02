@@ -9,5 +9,7 @@
 **/CTestTestfile.cmake
 **/cmake-build-debug
 
+*.db
+
 ## Ignore SQLite build directory
 #/sqlite
