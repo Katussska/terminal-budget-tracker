@@ -5,7 +5,17 @@
 #ifndef PROJECT_FINANCIALENTITY_H
 #define PROJECT_FINANCIALENTITY_H
 
-#include "DB.h"
+#include <SQLiteCpp/SQLiteCpp.h>
+#include <filesystem>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <utility>
+#include <vector>
+#include <utility>
+#include <sqlite3.h>
+#include <stdexcept>
+#include <ctime>
 
 class Category {
 private:
@@ -34,6 +44,10 @@ public:
             std::cout << "No limit";
             return 0;
         }
+    }
+
+    [[nodiscard]] bool isLimitSet() const {
+        return limitSet;
     }
 
     void setLimit(double newLimit) {

@@ -23,8 +23,8 @@ target_include_directories(lib PUBLIC
 # Link SQLiteCpp library to your library
 target_link_libraries(lib PUBLIC SQLiteCpp sqlite3 pthread dl)
 
-# Add directory with database files to the build directory
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/db DESTINATION ${CMAKE_BINARY_DIR})
+## Add directory with database files to the build directory
+#file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/db DESTINATION ${CMAKE_BINARY_DIR})
 
 # Define the main executable
 add_executable(main lib/src/main.cpp)

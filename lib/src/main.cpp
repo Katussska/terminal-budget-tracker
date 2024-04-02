@@ -1,17 +1,11 @@
 #include "../include/BudgetTracker.h"
 
 int main() {
-    try {
-        // Získání instance třídy Database
-        DB *dbInstance = DB::getInstance();
 
-        // Získání připojení k databázi
-        SQLite::Database &db = dbInstance->getConnection();
+    createSchema();
 
-    } catch (std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
+    addCategory("Kokot");
+    addCategory("Tvoje mama", 10.45);
 
     return 0;
 }

@@ -2,9 +2,15 @@
 // Created by katussska on 4/2/24.
 //
 
-#ifndef COINSHEN_CRUD_H
-#define COINSHEN_CRUD_H
+#ifndef PROJECT_CRUD_H
+#define PROJECT_CRUD_H
 
 #include "../include/Transaction.h"
 
-#endif //COINSHEN_CRUD_H
+SQLite::Database db("../lib/db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
+
+static void createSchema();
+
+static void createCategory(const Category &category);
+
+#endif //PROJECT_CRUD_H
