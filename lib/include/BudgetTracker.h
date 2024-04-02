@@ -7,18 +7,23 @@
 
 #include "../db/CRUD.h"
 
-////TODO: actually i domyslet, jak bude filter fungovat
-////std::vector<Transaction *> filter();
-//
-//// Methods for managing expenses
-//void addExpense();
-//
+///TODO: actually i domyslet, jak bude filter fungovat
+//std::vector<Transaction *> filter();
+
+/// Methods for managing transactions
+void addTransaction(std::string type, int accountID, double amount, std::string date);
+
+void addTransaction(std::string type, int accountID, int categoryId, double amount, std::string date);
+
+void addTransaction(std::string type, int accountID, double amount, std::string description, std::string date);
+
+void addTransaction(std::string type, int accountID, int categoryId, double amount, std::string description,
+                    std::string date);
+
+
 //void editExpense();
 //
 //void deleteExpense();
-//
-//// Methods for managing incomes
-//void addIncome();
 //
 //void editIncome();
 //
@@ -31,22 +36,22 @@ void addCategory(std::string name, double limit);
 
 //void editCategory(std::string name);
 //
-//void editCategory(double limit);
+//void editCategory(double budget);
 //
-//void editCategory(std::string name, double limit);
+//void editCategory(std::string name, double budget);
 //
-//void deleteCategory(std::string name);
-//
-//// Methods for managing accounts
-//void addAccount(std::string name, double balance);
-//
+void deleteCategory(int id);
+
+/// Methods for managing accounts
+void addAccount(std::string name, double balance);
+
 //void editAccount(std::string name);
 //
 //void editAccount(double balance);
 //
 //void editAccount(std::string name, double balance);
 //
-//void deleteAccount(std::string name);
+void deleteAccount(int id);
 
 
 #endif //PROJECT_BUDGETTRACKER_H

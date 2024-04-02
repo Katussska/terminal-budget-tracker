@@ -14,4 +14,15 @@ void createSchema();
 
 void createCategory(const Category &category);
 
+void createAccount(const Account &account);
+
+void createTransaction(std::string type, int accountID, const Transaction &income);
+
+void createTransaction(const std::string &type, int accountID, int categoryId, const Transaction &expense);
+
+void eraseCategory(int id);
+
+void eraseAccount(int id);
+
+
 #endif //PROJECT_CRUD_H

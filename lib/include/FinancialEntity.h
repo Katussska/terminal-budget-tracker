@@ -20,39 +20,43 @@
 class Category {
 private:
     std::string name;
-    double limit;
-    bool limitSet = false;
+    double budget;
+    bool budgetSet = false;
 public:
     explicit Category(std::string name) :
             name(std::move(name)) {}
 
-    Category(std::string name, double limit) :
-            name(std::move(name)), limit(limit), limitSet(true) {}
+    Category(std::string name, double budget) :
+            name(std::move(name)), budget(budget), budgetSet(true) {}
 
     [[nodiscard]] std::string getName() const {
-        return name;
+        std::string formattedName = name;
+
+        if (!formattedName.empty())
+            formattedName[0] = std::toupper(formattedName[0]);
+
+        return formattedName;
     }
 
     void setName(const std::string &newName) {
         name = newName;
     }
 
-    [[nodiscard]] double getLimit() const {
-        if (limitSet)
-            return limit;
+    [[nodiscard]] double getBudget() const {
+        if (budgetSet)
+            return budget;
         else {
-            std::cout << "No limit";
             return 0;
         }
     }
 
-    [[nodiscard]] bool isLimitSet() const {
-        return limitSet;
+    [[nodiscard]] bool isBudgetSet() const {
+        return budgetSet;
     }
 
-    void setLimit(double newLimit) {
-        limit = newLimit;
-        limitSet = true;
+    void setBudget(double newBudget) {
+        budget = newBudget;
+        budgetSet = true;
     }
 };
 
@@ -64,7 +68,12 @@ public:
     Account(std::string name, double balance) : name(std::move(name)), balance(balance) {}
 
     [[nodiscard]] std::string getName() const {
-        return name;
+        std::string formattedName = name;
+
+        if (!formattedName.empty())
+            formattedName[0] = std::toupper(formattedName[0]);
+
+        return formattedName;
     }
 
     void setName(const std::string &newName) {
