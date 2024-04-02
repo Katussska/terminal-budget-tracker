@@ -6,12 +6,12 @@
 
 // Methods for managing budget categories
 void addCategory(std::string name) {
-    Category newCategory{std::move(name)};
+    Category newCategory{name};
     createCategory(newCategory);
 }
 
 void addCategory(std::string name, double limit) {
-    Category newCategory{std::move(name), limit};
+    Category newCategory{name, limit};
     createCategory(newCategory);
 }
 
