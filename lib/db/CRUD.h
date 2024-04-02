@@ -10,6 +10,7 @@
 // todo: put this in the db class probably
 inline SQLite::Database db("../lib/db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
 
+///CREATE
 void createSchema();
 
 void createCategory(const Category &category);
@@ -20,9 +21,21 @@ void createTransaction(std::string type, int accountID, const Transaction &incom
 
 void createTransaction(const std::string &type, int accountID, int categoryId, const Transaction &expense);
 
-void eraseCategory(int id);
+///UPDATE
+void updateCategory(int id, const std::string &name, double budget);
 
-void eraseAccount(int id);
+void updateAccount(int id, const std::string &name, double balance);
+
+void updateTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
+                       std::string date);
+
+///READ
+//...
+
+///DELETE
+void destroyCategory(int id);
+
+void destroyAccount(int id);
 
 
 #endif //PROJECT_CRUD_H

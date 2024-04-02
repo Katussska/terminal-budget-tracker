@@ -20,7 +20,7 @@
 class Category {
 private:
     std::string name;
-    double budget;
+    double budget = 0;
     bool budgetSet = false;
 public:
     explicit Category(std::string name) :
@@ -38,9 +38,9 @@ public:
         return formattedName;
     }
 
-    void setName(const std::string &newName) {
-        name = newName;
-    }
+//    void setName(const std::string &newName) {
+//        name = newName;
+//    }
 
     [[nodiscard]] double getBudget() const {
         if (budgetSet)
@@ -53,11 +53,11 @@ public:
     [[nodiscard]] bool isBudgetSet() const {
         return budgetSet;
     }
-
-    void setBudget(double newBudget) {
-        budget = newBudget;
-        budgetSet = true;
-    }
+//
+//    void setBudget(double newBudget) {
+//        budget = newBudget;
+//        budgetSet = true;
+//    }
 };
 
 class Account {
@@ -76,33 +76,33 @@ public:
         return formattedName;
     }
 
-    void setName(const std::string &newName) {
-        name = newName;
-    }
+//    void setName(const std::string &newName) {
+//        name = newName;
+//    }
 
     [[nodiscard]] double getBalance() const {
         return balance;
     }
 
-    void setBalance(double newBalance) {
-        balance = newBalance;
-    }
-
-    void deposit(double amount) {
-        if (amount <= 0)
-            std::cout << "Deposit must be at least 1 dollar";
-        else
-            balance += amount;
-    }
-
-    void deposit(double amount, Account *account) {// prevest z jineho uctu
-        account->withdraw(amount);
-        balance += amount;
-    }
-
-    void withdraw(double amount) {
-        balance -= amount;
-    }
+//    void setBalance(double newBalance) {
+//        balance = newBalance;
+//    }
+//
+//    void deposit(double amount) {
+//        if (amount <= 0)
+//            std::cout << "Deposit must be at least 1 dollar";
+//        else
+//            balance += amount;
+//    }
+//
+//    void deposit(double amount, Account *account) {// Transaction from another account
+//        account->withdraw(amount);
+//        balance += amount;
+//    }
+//
+//    void withdraw(double amount) {
+//        balance -= amount;
+//    }
 };
 
 #endif //PROJECT_FINANCIALENTITY_H

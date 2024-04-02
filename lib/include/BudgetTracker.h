@@ -7,17 +7,17 @@
 
 #include "../db/CRUD.h"
 
-///TODO: actually i domyslet, jak bude filter fungovat
+/// Think about the implementation of filter
 //std::vector<Transaction *> filter();
 
 /// Methods for managing transactions
 void addTransaction(std::string type, int accountID, double amount, std::string date);
 
-void addTransaction(std::string type, int accountID, int categoryId, double amount, std::string date);
+void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string date);
 
 void addTransaction(std::string type, int accountID, double amount, std::string description, std::string date);
 
-void addTransaction(std::string type, int accountID, int categoryId, double amount, std::string description,
+void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string description,
                     std::string date);
 
 

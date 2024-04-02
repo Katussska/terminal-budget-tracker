@@ -3,8 +3,7 @@
 //
 #include "CRUD.h"
 
-
-//TODO: predelat v db budget na budget
+///CREATE
 void createSchema() {
     std::ifstream schemaFile("../lib/db/schema.sql");
     if (!schemaFile.is_open()) {
@@ -91,7 +90,63 @@ void createTransaction(const std::string &type, int accountID, int categoryId, c
         std::cerr << "Failed to add transaction '" << expense.getDescription() << "'." << std::endl;
 }
 
-void eraseCategory(int id) {
+///UPDATE
+//TODO: err if amount overstep budget
+void updateCategory(int id, const std::string &name, double budget) {
+    if (!name.empty()) {
+        SQLite::Statement nameQuery(db, "UPDATE Category SET name = ? WHERE id = ?");
+        nameQuery.bind(1, name);
+        nameQuery.bind(2, id);
+        if (nameQuery.exec())
+            std::cout << "Edited category with id '" << id << "'. (name)" << std::endl;
+        else
+            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+    }
+
+    if (budget != 0.0) {
+        SQLite::Statement budgetQuery(db, "UPDATE Category SET budget = ?, budgetSet = 1 WHERE id = ?");
+        budgetQuery.bind(1, budget);
+        budgetQuery.bind(2, id);
+        if (budgetQuery.exec())
+            std::cout << "Edited category with id '" << id << "'. (budget)" << std::endl;
+        else
+            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+    }
+}
+
+//TODO: err if balance negative
+void updateAccount(int id, const std::string &name, double balance) {
+    if (!name.empty()) {
+        SQLite::Statement nameQuery(db, "UPDATE Account SET name = ? WHERE id = ?");
+        nameQuery.bind(1, name);
+        nameQuery.bind(2, id);
+        if (nameQuery.exec())
+            std::cout << "Edited account with id '" << id << "'. (name)" << std::endl;
+        else
+            std::cerr << "Editing account with id '" << id << "' unsuccessful." << std::endl;
+    }
+
+    if (balance != 0.0) {
+        SQLite::Statement balanceQuery(db, "UPDATE Account SET balance = ? WHERE id = ?");
+        balanceQuery.bind(1, balance);
+        balanceQuery.bind(2, id);
+        if (balanceQuery.exec())
+            std::cout << "Edited category with id '" << id << "'. (balance)" << std::endl;
+        else
+            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+    }
+}
+
+void
+updateTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
+                  const std::string &date) {
+
+}
+
+///READ
+
+///DELETE
+void destroyCategory(int id) {
     SQLite::Statement query(db, "DELETE FROM Category WHERE id = ?");
     query.bind(1, id);
 
@@ -101,7 +156,7 @@ void eraseCategory(int id) {
         std::cerr << "Failed to delete category with ID '" << id << "'." << std::endl;
 }
 
-void eraseAccount(int id) {
+void destroyAccount(int id) {
     SQLite::Statement query(db, "DELETE FROM Account WHERE id = ?");
     query.bind(1, id);
 

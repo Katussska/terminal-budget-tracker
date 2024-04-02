@@ -33,17 +33,17 @@ public:
         return date;
     }
 
-    static void setAmount(double amount) {
-        amount = amount;
-    }
-
-    void setDescription(std::string desc) {
-        description = std::move(desc);
-    }
-
-    void setDate(std::string d) {
-        date = std::move(d);
-    }
+//    static void setAmount(double amount) {
+//        amount = amount;
+//    }
+//
+//    void setDescription(std::string desc) {
+//        description = std::move(desc);
+//    }
+//
+//    void setDate(std::string d) {
+//        date = std::move(d);
+//    }
 };
 
 #endif //PROJECT_TRANSACTION_H

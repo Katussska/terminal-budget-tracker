@@ -9,60 +9,61 @@
 /// Methods for managing transactions
 void addTransaction(std::string type, int accountID, double amount, std::string date) {
     Transaction newIncome{amount, std::move(date)};
-    createTransaction(type, accountID, newIncome);
+    createTransaction(std::move(type), accountID, newIncome);
 }
 
 void addTransaction(std::string type, int accountID, double amount, std::string description, std::string date) {
     Transaction newIncome{amount, std::move(description), std::move(date)};
-    createTransaction(type, accountID, newIncome);
+    createTransaction(std::move(type), accountID, newIncome);
 }
 
 void
-addTransaction(std::string type, int accountID, int categoryId, double amount, std::string description,
+addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string description,
                std::string date) {
     Transaction newExpense{amount, std::move(description), std::move(date)};
     createTransaction(type, accountID, categoryId, newExpense);
 }
 
-void addTransaction(std::string type, int accountID, int categoryId, double amount, std::string date) {
+void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string date) {
     Transaction newExpense{amount, std::move(date)};
     createTransaction(type, accountID, categoryId, newExpense);
 }
 
+void
+editTransaction(int id, int accountID = 0, int categoryId = 0, double amount = 0, const std::string &description = "",
+                const std::string &date = "") {
+    updateTransaction(id, accountID, categoryId, amount, description, date);
+}
 
 /// Methods for managing budget categories
 void addCategory(std::string name) {
-    Category newCategory{name};
+    Category newCategory{std::move(name)};
     createCategory(newCategory);
 }
 
 void addCategory(std::string name, double limit) {
-    Category newCategory{name, limit};
+    Category newCategory{std::move(name), limit};
     createCategory(newCategory);
 }
 
-//void editCategory(std::string name) {}
-//
-//void editCategory(double budget) {}
-//
-//void editCategory(std::string name, double budget) {}
-//
+void editCategory(int id, const std::string &name = "", double budget = 0.0) {
+    updateCategory(id, name, budget);
+}
+
 void deleteCategory(int id) {
-    eraseCategory(id);
+    destroyCategory(id);
 }
 
 /// Methods for managing accounts
 void addAccount(std::string name, double balance) {
-    Account newAccount{name, balance};
+    Account newAccount{std::move(name), balance};
     createAccount(newAccount);
 }
 
-//void editAccount(std::string name) {}
-//
-//void editAccount(double balance) {}
-//
-//void editAccount(std::string name, double balance) {}
-//
+void editAccount(int id, const std::string &name = "", double balance = 0.0) {
+    updateAccount(id, name, balance);
+}
+
 void deleteAccount(int id) {
-    eraseAccount(id);
+    destroyAccount(id);
 }
