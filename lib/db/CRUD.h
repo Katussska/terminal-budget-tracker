@@ -7,7 +7,6 @@
 
 #include "../include/Transaction.h"
 
-// todo: put this in the db class probably
 inline SQLite::Database db("../lib/db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
 
 ///CREATE
@@ -17,7 +16,7 @@ void createCategory(const Category &category);
 
 void createAccount(const Account &account);
 
-void createTransaction(std::string type, int accountID, const Transaction &income);
+void createTransaction(const std::string &type, int accountID, const Transaction &income);
 
 void createTransaction(const std::string &type, int accountID, int categoryId, const Transaction &expense);
 
@@ -36,6 +35,8 @@ void updateTransaction(int id, int accountID, int categoryId, double amount, con
 void destroyCategory(int id);
 
 void destroyAccount(int id);
+
+void destroyTransaction(int id);
 
 
 #endif //PROJECT_CRUD_H

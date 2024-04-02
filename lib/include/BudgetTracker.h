@@ -20,38 +20,26 @@ void addTransaction(std::string type, int accountID, double amount, std::string 
 void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string description,
                     std::string date);
 
+void
+editTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
+                const std::string &date);
 
-//void editExpense();
-//
-//void deleteExpense();
-//
-//void editIncome();
-//
-//void deleteIncome();
+void deleteTransaction(int id);
 
-// Methods for managing budget categories
+/// Methods for managing budget categories
 void addCategory(std::string name);
 
 void addCategory(std::string name, double limit);
 
-//void editCategory(std::string name);
-//
-//void editCategory(double budget);
-//
-//void editCategory(std::string name, double budget);
-//
+void editCategory(int id, const std::string &name, double budget);
+
 void deleteCategory(int id);
 
 /// Methods for managing accounts
 void addAccount(std::string name, double balance);
 
-//void editAccount(std::string name);
-//
-//void editAccount(double balance);
-//
-//void editAccount(std::string name, double balance);
-//
-void deleteAccount(int id);
+void editAccount(int id, std::string name, double balance);
 
+void deleteAccount(int id);
 
 #endif //PROJECT_BUDGETTRACKER_H

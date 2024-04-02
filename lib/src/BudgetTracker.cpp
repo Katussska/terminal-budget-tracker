@@ -35,6 +35,10 @@ editTransaction(int id, int accountID = 0, int categoryId = 0, double amount = 0
     updateTransaction(id, accountID, categoryId, amount, description, date);
 }
 
+void deleteTransaction(int id) {
+    destroyTransaction(id);
+}
+
 /// Methods for managing budget categories
 void addCategory(std::string name) {
     Category newCategory{std::move(name)};

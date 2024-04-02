@@ -2,6 +2,7 @@
 // Created by katussska on 4/1/24.
 //
 #include "CRUD.h"
+//TODO: pretty ugly, mby more "helper" functions for code reduction?
 
 ///CREATE
 void createSchema() {
@@ -56,7 +57,8 @@ void createAccount(const Account &account) {
     insertQuery.exec();
 }
 
-void createTransaction(std::string type, int accountID, const Transaction &income) {
+//TODO: mby rework like update/edit?
+void createTransaction(const std::string &type, int accountID, const Transaction &income) {
     SQLite::Statement query(db,
                             "INSERT INTO Transaction(type, amount, description, category_id, account_id, date) "
                             "VALUES (?, ?, ?, ?, ?, ?)");
@@ -100,7 +102,7 @@ void updateCategory(int id, const std::string &name, double budget) {
         if (nameQuery.exec())
             std::cout << "Edited category with id '" << id << "'. (name)" << std::endl;
         else
-            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+            std::cerr << "Editing category with id '" << id << "' unsuccessful.(name)" << std::endl;
     }
 
     if (budget != 0.0) {
@@ -110,7 +112,7 @@ void updateCategory(int id, const std::string &name, double budget) {
         if (budgetQuery.exec())
             std::cout << "Edited category with id '" << id << "'. (budget)" << std::endl;
         else
-            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+            std::cerr << "Editing category with id '" << id << "' unsuccessful.(budget)" << std::endl;
     }
 }
 
@@ -123,7 +125,7 @@ void updateAccount(int id, const std::string &name, double balance) {
         if (nameQuery.exec())
             std::cout << "Edited account with id '" << id << "'. (name)" << std::endl;
         else
-            std::cerr << "Editing account with id '" << id << "' unsuccessful." << std::endl;
+            std::cerr << "Editing account with id '" << id << "' unsuccessful.(name)" << std::endl;
     }
 
     if (balance != 0.0) {
@@ -133,18 +135,68 @@ void updateAccount(int id, const std::string &name, double balance) {
         if (balanceQuery.exec())
             std::cout << "Edited category with id '" << id << "'. (balance)" << std::endl;
         else
-            std::cerr << "Editing category with id '" << id << "' unsuccessful." << std::endl;
+            std::cerr << "Editing category with id '" << id << "' unsuccessful.(balance)" << std::endl;
     }
 }
 
+//TODO: when transaction added mby category or account will be updated
 void
 updateTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
                   const std::string &date) {
+    if (accountID != 0) {
+        SQLite::Statement accountQuery(db, "UPDATE Transaction SET account_id = ? WHERE id = ?");
+        accountQuery.bind(1, accountID);
+        accountQuery.bind(2, id);
+        if (accountQuery.exec())
+            std::cout << "Edited transaction with id '" << id << "'. (account_id)" << std::endl;
+        else
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful.(account_id)" << std::endl;
+    }
 
+    if (categoryId != 0) {
+        SQLite::Statement categoryQuery(db, "UPDATE Transaction SET category_id = ? WHERE id = ?");
+        categoryQuery.bind(1, categoryId);
+        categoryQuery.bind(2, id);
+        if (categoryQuery.exec())
+            std::cout << "Edited transaction with id '" << id << "'. (category_id)" << std::endl;
+        else
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful.(category_id)" << std::endl;
+    }
+
+    if (amount != 0.0) {
+        SQLite::Statement amountQuery(db, "UPDATE Transaction SET amount = ? WHERE id = ?");
+        amountQuery.bind(1, amount);
+        amountQuery.bind(2, id);
+        if (amountQuery.exec())
+            std::cout << "Edited transaction with id '" << id << "'. (amount)" << std::endl;
+        else
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful.(amount)" << std::endl;
+    }
+
+    if (!description.empty()) {
+        SQLite::Statement descQuery(db, "UPDATE Transaction SET description = ? WHERE id = ?");
+        descQuery.bind(1, description);
+        descQuery.bind(2, id);
+        if (descQuery.exec())
+            std::cout << "Edited transaction with id '" << id << "'. (description)" << std::endl;
+        else
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful.(description)" << std::endl;
+    }
+
+    if (!date.empty()) {
+        SQLite::Statement dateQuery(db, "UPDATE Transaction SET date = ? WHERE id = ?");
+        dateQuery.bind(1, date);
+        dateQuery.bind(2, id);
+        if (dateQuery.exec())
+            std::cout << "Edited transaction with id '" << id << "'. (date)" << std::endl;
+        else
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful.(date)" << std::endl;
+    }
 }
 
 ///READ
 
+//TODO: mby wrong id error?
 ///DELETE
 void destroyCategory(int id) {
     SQLite::Statement query(db, "DELETE FROM Category WHERE id = ?");
@@ -164,4 +216,14 @@ void destroyAccount(int id) {
         std::cout << "Account with ID '" << id << "' deleted successfully." << std::endl;
     else
         std::cerr << "Failed to delete account with ID '" << id << "'." << std::endl;
+}
+
+void destroyTransaction(int id) {
+    SQLite::Statement query(db, "DELETE FROM Transaction WHERE id = ?");
+    query.bind(1, id);
+
+    if (query.exec())
+        std::cout << "Transaction with ID '" << id << "' deleted successfully." << std::endl;
+    else
+        std::cerr << "Failed to delete transaction with ID '" << id << "'." << std::endl;
 }
