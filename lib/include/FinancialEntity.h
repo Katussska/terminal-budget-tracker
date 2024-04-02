@@ -20,7 +20,7 @@
 class Category {
 private:
     std::string name;
-    double limit{};
+    double limit;
     bool limitSet = false;
 public:
     explicit Category(std::string name) :

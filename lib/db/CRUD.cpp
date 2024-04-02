@@ -25,7 +25,8 @@ void createSchema() {
 }
 
 void createCategory(const Category &category) {
-    SQLite::Statement query(db, "INSERT INTO Category (name, budget, budgetSet) VALUE (?, ?, ?)");
+    SQLite::Statement query(db, "INSERT INTO Category (name, budget, budgetSet) VALUES (?, ?, ?)");
+    // std::cout << category.getName() << " " << category.getLimit() << " " << category.isLimitSet();
     query.bind(1, category.getName());
     query.bind(2, category.getLimit());
     query.bind(3, category.isLimitSet());

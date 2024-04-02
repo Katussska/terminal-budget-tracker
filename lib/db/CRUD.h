@@ -7,10 +7,11 @@
 
 #include "../include/Transaction.h"
 
-SQLite::Database db("../lib/db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
+// todo: put this in the db class probably
+inline SQLite::Database db("../lib/db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
 
-static void createSchema();
+void createSchema();
 
-static void createCategory(const Category &category);
+void createCategory(const Category &category);
 
 #endif //PROJECT_CRUD_H

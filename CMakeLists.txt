@@ -6,19 +6,16 @@ set(CMAKE_CXX_STANDARD 17)
 # Add SQLiteCpp library
 add_subdirectory(lib/deps/SQLiteCpp)
 
+file(GLOB LIB_SRC lib/db/*.cpp lib/db/*.h lib/include/*.h lib/src/BudgetTracker.cpp)
+
 # Add your library
-add_library(lib STATIC
-        lib/src/BudgetTracker.cpp
-        lib/db/CRUD.cpp
-        lib/db/seed.cpp
-        lib/db/CRUD.h
-)
+add_library(lib STATIC ${LIB_SRC})
 
 # Include directories for your library
-target_include_directories(lib PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/deps/SQLiteCpp/include
-)
+#target_include_directories(lib PUBLIC
+#        ${CMAKE_CURRENT_SOURCE_DIR}/lib/include
+#        ${CMAKE_CURRENT_SOURCE_DIR}/lib/deps/SQLiteCpp/include
+#)
 
 # Link SQLiteCpp library to your library
 target_link_libraries(lib PUBLIC SQLiteCpp sqlite3 pthread dl)
