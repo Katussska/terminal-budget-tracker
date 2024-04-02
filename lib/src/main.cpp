@@ -1,22 +1,15 @@
 #include "../include/BudgetTracker.h"
 
 int main() {
-    SQLite::Database db("../db/database.db", SQLite::OPEN_CREATE | SQLite::OPEN_READWRITE);
-
-    std::ifstream schemaFile("../db/schema.sql");
-    if (!schemaFile.is_open()) {
-        std::cerr << "Error opening schema file." << std::endl;
-        return 1;
-    }
-
-    std::string schemaSql((std::istreambuf_iterator<char>(schemaFile)),
-                          std::istreambuf_iterator<char>());
-
     try {
-        db.exec(schemaSql);
-        std::cout << "Schema created successfully." << std::endl;
-    } catch (SQLite::Exception &e) {
-        std::cerr << "Error executing SQL commands: " << e.what() << std::endl;
+        // Získání instance třídy Database
+        DB *dbInstance = DB::getInstance();
+
+        // Získání připojení k databázi
+        SQLite::Database &db = dbInstance->getConnection();
+
+    } catch (std::exception &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
 

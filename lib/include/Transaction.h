@@ -5,57 +5,83 @@
 #ifndef PROJECT_TRANSACTION_H
 #define PROJECT_TRANSACTION_H
 
+#include <utility>
+
 #include "FinancialEntity.h"
 
 class Transaction {
 protected:
+
     Account *account;
     double amount;
     std::string description;
-    std::time_t date; // :TODO udelat time class nebo nejakou knihovnu na to, std::time?
+    std::string date;
 
 public:
-//    Transaction(Account *account, double amount, std::string date) :
-//            account(account), amount(amount), date(std::move(date)) {}
-//
-//    Transaction(Account *account, double amount, std::string description, std::string date)
-//            : account(account), amount(amount), description(std::move(description)), date(std::move(date)) {}
+    explicit Transaction(Account *account, double amount, std::string date) :
+            account(account), amount(amount), date(std::move(date)) {}
 
-    double getAmount() const;
+    Transaction(Account *account, double amount, std::string description, std::string date)
+            : account(account), amount(amount), description(std::move(description)), date(std::move(date)) {}
 
-    std::string getDescription() const;
+    [[nodiscard]] double getAmount() const {
+        return amount;
+    }
 
-    std::string getDate() const;
+    [[nodiscard]] std::string getDescription() const {
+        return description;
+    }
 
-    void setAmount() const;
+    [[nodiscard]] std::string getDate() const {
+        return date;
+    }
 
-    void setDescription() const;
+    static void setAmount(double amount) {
+        amount = amount;
+    }
 
-    void setDate() const;
+    void setDescription(std::string desc) {
+        description = std::move(desc);
+    }
+
+    void setDate(std::string d) {
+        date = std::move(d);
+    }
 };
 
 class Expense : public Transaction {
 private:
-    Category *category;
+    Category *category = nullptr;
 public:
-    Expense(Account *account, double amount, std::string date);
+    explicit Expense(Account *account, double amount, std::string date)
+            : Transaction(account, amount, std::move(date)) {}
 
-    Expense(Account *account, Category *category, double amount, std::string date);
 
-    Expense(Account *account, double amount, std::string description, std::string date);
+    explicit Expense(Account *account, Category *category, double amount, std::string date)
+            : Transaction(account, amount, std::move(date)), category(category) {}
 
-    Expense(Account *account, Category *category, double amount, std::string description, std::string date);
+    explicit Expense(Account *account, double amount, std::string description, std::string date)
+            : Transaction(account, amount, std::move(description), std::move(date)) {}
 
-    Category *getCategory() const;
+    Expense(Account *account, Category *category, double amount, std::string description, std::string date)
+            : Transaction(account, amount, std::move(description), std::move(date)), category(category) {}
 
-    void setCategory(Category *newCategory);
+    [[nodiscard]] Category *getCategory() const {
+        return category;
+    }
+
+    void setCategory(Category *newCategory) {
+        category = newCategory;
+    }
 };
 
 class Income : public Transaction {
 public:
-    Income(Account *account, double amount, const std::string &date);
+    explicit Income(Account *account, double amount, std::string date)
+            : Transaction(account, amount, std::move(date)) {}
 
-    Income(Account *account, double amount, const std::string &description, const std::string &date);
+    Income(Account *account, double amount, std::string description, std::string date)
+            : Transaction(account, amount, std::move(description), std::move(date)) {}
 };
 
 #endif //PROJECT_TRANSACTION_H

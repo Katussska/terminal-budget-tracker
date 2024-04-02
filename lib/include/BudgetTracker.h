@@ -2,52 +2,43 @@
 // Created by katussska on 3/26/24.
 //
 
-#ifndef PROJECT_BUDGETTRACKER_H
-#define PROJECT_BUDGETTRACKER_H
+#ifndef COINSHEN_BUDGETTRACKER_H
+#define COINSHEN_BUDGETTRACKER_H
 
-#include "Transaction.h"
+#include "../db/CRUD.h"
 
-class BudgetTracker {
-private:
-//    std::vector<Expense *> expenses;
-//    std::vector<Income *> incomes;
-//    std::vector<Category *> categories;
-//    std::vector<Account *> accounts;
-
-public:
-    //TODO: dodelat, nejsou vsechny funkce dodelane ani pro basic pouziti
+//TODO: dodelat, nejsou vsechny funkce dodelane ani pro basic pouziti
 
 
-    std::vector<Transaction *> filter();
+std::vector<Transaction *> filter();
 
-    // Methods for managing expenses
-    void addExpense(const Expense &expense);
+// Methods for managing expenses
+void addExpense();
 
-    void editExpense(int index, const Expense &newExpense);
+void editExpense();
 
-    void deleteExpense(int index);
+void deleteExpense();
 
-    // Methods for managing incomes
-    void addIncome(const Income &income);
+// Methods for managing incomes
+void addIncome();
 
-    void editIncome(int index, const Income &newIncome);
+void editIncome();
 
-    void deleteIncome(int index);
+void deleteIncome();
 
-    // Methods for managing budget categories
-    void addCategory(const Category &category);
+// Methods for managing budget categories
+void addCategory();
 
-    void editCategory(int index, const Category &newCategory);
+void editCategory();
 
-    void deleteCategory(int index);
+void deleteCategory();
 
-    // Methods for managing accounts
-    void addAccount(const Account &account);
+// Methods for managing accounts
+void addAccount();
 
-    void editAccount(int index, const Account &newAccount);
+void editAccount();
 
-    void deleteAccount(int index);
-};
+void deleteAccount();
 
 
-#endif //PROJECT_BUDGETTRACKER_H
+#endif //COINSHEN_BUDGETTRACKER_H

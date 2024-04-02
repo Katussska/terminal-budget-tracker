@@ -5,54 +5,81 @@
 #ifndef PROJECT_FINANCIALENTITY_H
 #define PROJECT_FINANCIALENTITY_H
 
-#include <SQLiteCpp/SQLiteCpp.h>
-#include <filesystem>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <utility>
-#include <sqlite3.h>
-#include <ctime>
+#include "DB.h"
 
 class Category {
 private:
     std::string name;
-    double limit;
+    double limit{};
     bool limitSet = false;
 public:
-    Category(const std::string name);
+    explicit Category(std::string name) :
+            name(std::move(name)) {}
 
-    Category(const std::string name, double limit);
+    Category(std::string name, double limit) :
+            name(std::move(name)), limit(limit), limitSet(true) {}
 
-    std::string getName() const;
+    [[nodiscard]] std::string getName() const {
+        return name;
+    }
 
-    void setName(const std::string &newName);
+    void setName(const std::string &newName) {
+        name = newName;
+    }
 
-    double getLimit() const;
+    [[nodiscard]] double getLimit() const {
+        if (limitSet)
+            return limit;
+        else {
+            std::cout << "No limit";
+            return 0;
+        }
+    }
 
-    void setLimit(double newLimit);
+    void setLimit(double newLimit) {
+        limit = newLimit;
+        limitSet = true;
+    }
 };
 
 class Account {
+private:
     std::string name;
     double balance;
 public:
-    Account(const std::string name, double balance);
+    Account(std::string name, double balance) : name(std::move(name)), balance(balance) {}
 
-    std::string getName() const;
+    [[nodiscard]] std::string getName() const {
+        return name;
+    }
 
-    void setName(const std::string &newName);
+    void setName(const std::string &newName) {
+        name = newName;
+    }
 
-    double getBalance();
+    [[nodiscard]] double getBalance() const {
+        return balance;
+    }
 
-    void setBalance(double newBalance);
+    void setBalance(double newBalance) {
+        balance = newBalance;
+    }
 
-    void deposit(double amount);
+    void deposit(double amount) {
+        if (amount <= 0)
+            std::cout << "Deposit must be at least 1 dollar";
+        else
+            balance += amount;
+    }
 
-    void deposit(double amount, Account *account); // prevest z jineho uctu
+    void deposit(double amount, Account *account) {// prevest z jineho uctu
+        account->withdraw(amount);
+        balance += amount;
+    }
 
-    void withdraw(double amount);
+    void withdraw(double amount) {
+        balance -= amount;
+    }
 };
 
 #endif //PROJECT_FINANCIALENTITY_H
