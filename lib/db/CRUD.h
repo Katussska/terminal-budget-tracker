@@ -26,7 +26,7 @@ void updateCategory(int id, const std::string &name, double budget);
 void updateAccount(int id, const std::string &name, double balance);
 
 void updateTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
-                       std::string date);
+                       const std::string &date);
 
 ///READ
 //...

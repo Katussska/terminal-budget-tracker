@@ -60,12 +60,12 @@ void createAccount(const Account &account) {
 //TODO: mby rework like update/edit?
 void createTransaction(const std::string &type, int accountID, const Transaction &income) {
     SQLite::Statement query(db,
-                            "INSERT INTO Transaction(type, amount, description, category_id, account_id, date) "
-                            "VALUES (?, ?, ?, ?, ?, ?)");
+                            "INSERT INTO 'Transaction' (type, amount, description, category_id, account_id, date) VALUES (?, ?, ?, ?, ?, ?)");
+
     query.bind(1, type);
     query.bind(2, income.getAmount());
     query.bind(3, income.getDescription());
-    query.bind(4, NULL);
+    query.bind(4, nullptr);
     query.bind(5, accountID);
     query.bind(6, income.getDate());
 
@@ -77,8 +77,7 @@ void createTransaction(const std::string &type, int accountID, const Transaction
 
 void createTransaction(const std::string &type, int accountID, int categoryId, const Transaction &expense) {
     SQLite::Statement query(db,
-                            "INSERT INTO Transaction(type, amount, description, category_id, account_id, date) "
-                            "VALUES (?, ?, ?, ?, ?, ?)");
+                            "INSERT INTO 'Transaction' (type, amount, description, category_id, account_id, date) VALUES (?, ?, ?, ?, ?, ?)");
     query.bind(1, type);
     query.bind(2, expense.getAmount());
     query.bind(3, expense.getDescription());
@@ -106,6 +105,11 @@ void updateCategory(int id, const std::string &name, double budget) {
     }
 
     if (budget != 0.0) {
+        SQLite::Statement query(db, "SELECT SUM(amount) FROM \"Transaction\" WHERE category_id = ?");
+        query.bind(1, id);
+        query.exec();
+        double sum = query.getColumn(0).getDouble();
+        //todo: finish budget err
         SQLite::Statement budgetQuery(db, "UPDATE Category SET budget = ?, budgetSet = 1 WHERE id = ?");
         budgetQuery.bind(1, budget);
         budgetQuery.bind(2, id);
