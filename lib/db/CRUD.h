@@ -23,7 +23,7 @@ void createTransaction(const std::string &type, int accountID, int categoryId, c
 ///UPDATE
 void updateCategory(int id, const std::string &name, double budget);
 
-void updateAccount(int id, const std::string &name, double balance);
+void updateAccount(int id, const std::string &name, double balance, double moneyChange);
 
 void updateTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
                        const std::string &date);

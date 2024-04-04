@@ -6,11 +6,14 @@ int main() {
 
     addAccount("mBank", 10000);
 
+    deleteCategory(1);
+    deleteCategory(2);
+
     addCategory("fun", 1000);
     addCategory("gas");
 
-    addTransaction("income", 1, 5000, "paycheck" , "20.03.2024");
-    addTransaction("expense", 1, 2, 1000, "20.03.2024");
+    addTransaction("income", 1, 5000, "paycheck", "20.03.2024");
+    addTransaction("expense", 1, 4, -1000, "20.03.2024");
 
     return 0;
 }

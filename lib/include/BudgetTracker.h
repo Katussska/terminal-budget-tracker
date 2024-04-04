@@ -11,18 +11,21 @@
 //std::vector<Transaction *> filter();
 
 /// Methods for managing transactions
-void addTransaction(const std::string& type, int accountID, double amount, std::string date);
+void addTransaction
+        (const std::string &type, int accountID, double amount, std::string date);
 
-void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string date);
+void addTransaction
+        (const std::string &type, int accountID, int categoryId, double amount, std::string date);
 
-void addTransaction(const std::string& type, int accountID, double amount, std::string description, std::string date);
+void addTransaction
+        (const std::string &type, int accountID, double amount, std::string description, std::string date);
 
-void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string description,
-                    std::string date);
+void addTransaction
+        (const std::string &type, int accountID, int categoryId, double amount, std::string description,
+         std::string date);
 
-void
-editTransaction(int id, int accountID, int categoryId, double amount, const std::string &description,
-                const std::string &date);
+void editTransaction
+        (int id, int accountID, int categoryId, double amount, const std::string &description, const std::string &date);
 
 void deleteTransaction(int id);
 
@@ -38,7 +41,7 @@ void deleteCategory(int id);
 /// Methods for managing accounts
 void addAccount(std::string name, double balance);
 
-void editAccount(int id, std::string name, double balance);
+void editAccount(int id, std::string name, double balance, double moneyChange);
 
 void deleteAccount(int id);
 

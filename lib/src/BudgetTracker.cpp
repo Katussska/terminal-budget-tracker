@@ -7,12 +7,12 @@
 #include "../include/BudgetTracker.h"
 
 /// Methods for managing transactions
-void addTransaction(const std::string& type, int accountID, double amount, std::string date) {
+void addTransaction(const std::string &type, int accountID, double amount, std::string date) {
     Transaction newIncome{amount, std::move(date)};
     createTransaction(type, accountID, newIncome);
 }
 
-void addTransaction(const std::string& type, int accountID, double amount, std::string description, std::string date) {
+void addTransaction(const std::string &type, int accountID, double amount, std::string description, std::string date) {
     Transaction newIncome{amount, std::move(description), std::move(date)};
     createTransaction(type, accountID, newIncome);
 }
@@ -64,8 +64,8 @@ void addAccount(std::string name, double balance) {
     createAccount(newAccount);
 }
 
-void editAccount(int id, const std::string &name = "", double balance = 0.0) {
-    updateAccount(id, name, balance);
+void editAccount(int id, const std::string &name = "", double balance = 0.0, double moneyChange = 0.0) {
+    updateAccount(id, name, balance, moneyChange);
 }
 
 void deleteAccount(int id) {
