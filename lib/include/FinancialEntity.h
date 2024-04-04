@@ -15,6 +15,7 @@
 #include <utility>
 #include <sqlite3.h>
 #include <stdexcept>
+#include <memory>
 #include <ctime>
 
 class Category {

@@ -7,26 +7,10 @@
 #include "../include/BudgetTracker.h"
 
 /// Methods for managing transactions
-void addTransaction(const std::string &type, int accountID, double amount, std::string date) {
-    Transaction newIncome{amount, std::move(date)};
-    createTransaction(type, accountID, newIncome);
-}
-
-void addTransaction(const std::string &type, int accountID, double amount, std::string description, std::string date) {
-    Transaction newIncome{amount, std::move(description), std::move(date)};
-    createTransaction(type, accountID, newIncome);
-}
-
-void
-addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string description,
-               std::string date) {
-    Transaction newExpense{amount, std::move(description), std::move(date)};
-    createTransaction(type, accountID, categoryId, newExpense);
-}
-
-void addTransaction(const std::string &type, int accountID, int categoryId, double amount, std::string date) {
-    Transaction newExpense{amount, std::move(date)};
-    createTransaction(type, accountID, categoryId, newExpense);
+void addTransaction(const std::string &type, int accountID, int categoryId, double amount,
+                    const std::string &description, const std::string &date) {
+    Transaction newTransaction{amount, description, date};
+    createTransaction(type, accountID, categoryId, newTransaction);
 }
 
 void
@@ -36,7 +20,7 @@ editTransaction(int id, int accountID = 0, int categoryId = 0, double amount = 0
 }
 
 void deleteTransaction(int id) {
-    destroyTransaction(id);
+    destroyEntity("'Transaction'", id);
 }
 
 /// Methods for managing budget categories
@@ -55,7 +39,7 @@ void editCategory(int id, const std::string &name = "", double budget = 0.0) {
 }
 
 void deleteCategory(int id) {
-    destroyCategory(id);
+    destroyEntity("Category", id);
 }
 
 /// Methods for managing accounts
@@ -69,5 +53,5 @@ void editAccount(int id, const std::string &name = "", double balance = 0.0, dou
 }
 
 void deleteAccount(int id) {
-    destroyAccount(id);
+    destroyEntity("Account", id);
 }

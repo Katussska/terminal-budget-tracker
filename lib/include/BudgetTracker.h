@@ -12,17 +12,8 @@
 
 /// Methods for managing transactions
 void addTransaction
-        (const std::string &type, int accountID, double amount, std::string date);
-
-void addTransaction
-        (const std::string &type, int accountID, int categoryId, double amount, std::string date);
-
-void addTransaction
-        (const std::string &type, int accountID, double amount, std::string description, std::string date);
-
-void addTransaction
-        (const std::string &type, int accountID, int categoryId, double amount, std::string description,
-         std::string date);
+        (const std::string &type, int accountID, int categoryId, double amount,
+         const std::string &description, const std::string &date);
 
 void editTransaction
         (int id, int accountID, int categoryId, double amount, const std::string &description, const std::string &date);
