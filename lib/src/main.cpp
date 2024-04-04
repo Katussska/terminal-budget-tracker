@@ -2,7 +2,7 @@
 
 int main() {
 
-//    createSchema();
+    createSchema();
 
     addAccount("mBank", 10000);
 
