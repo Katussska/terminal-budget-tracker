@@ -14,8 +14,8 @@ int main() {
     addCategory("fun", 1000);
     addCategory("gas");
 
-    addTransaction("income", 1, 0, 5000, "paycheck", "20.03.2024");
-    addTransaction("expense", 1, 1, -150, "pub", "20.03.2024");
+//    addTransaction("income", 1, 0, 5000, "paycheck", "20.03.2024");
+//    addTransaction("expense", 1, 1, -150, "pub", "20.03.2024");
 
     return 0;
 }

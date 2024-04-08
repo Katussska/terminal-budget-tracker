@@ -249,7 +249,11 @@ updateTransaction(int id, int accountID, int categoryId, double amount, const st
 }
 
 ///READ
-//...
+//Funkce načítání filtrovaných transakcí:
+//Funkce načítání dostupných účtů a kategorií:
+//Funkce načítání typů transakcí:
+//Funkce načítání dat o transakcích na základě ID:
+
 
 ///DELETE
 void destroyEntity(const std::string &table, int id) {
