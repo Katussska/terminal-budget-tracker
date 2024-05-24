@@ -9,7 +9,34 @@
 **/CTestTestfile.cmake
 **/cmake-build-debug
 
+# Ignore SQLite database files
 *.db
 
-## Ignore SQLite build directory
-#/sqlite
+# Ignore SQLiteCpp submodule build directory
+/SQLiteCpp/build
+
+# Ignore CLion IDE files
+.idea/
+*.iml
+
+# Ignore compiled files
+*.o
+*.so
+*.a
+*.out
+*.exe
+
+# Ignore core dumps
+core
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+*.rej
