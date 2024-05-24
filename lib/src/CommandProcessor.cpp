@@ -3,6 +3,7 @@
 //
 
 #include "../include/CommandProcessor.h"
+#include <iostream>
 
 void CommandProcessor::processCommand(const std::string &command, const std::string &entity) {
     if (command == "add") {
@@ -11,6 +12,8 @@ void CommandProcessor::processCommand(const std::string &command, const std::str
         deleteEntity(entity);
     } else if (command == "get") {
         getEntity(entity);
+    } else if (command == "help") {
+        printHelp();
     } else {
         std::cerr << "Invalid command.\n";
     }
@@ -24,7 +27,7 @@ void CommandProcessor::addEntity(const std::string &entity) {
         std::cin.ignore();  // Ignore the newline character in the input buffer
         std::getline(std::cin, name);
         std::cout << "Enter category limit (optional, enter 0 if no limit): ";
-        while (!(std::cin >> limit) || limit > std::numeric_limits<double>::max() || std::cin.fail()) {
+        while (!(std::cin >> limit) || limit > std::numeric_limits<double>::max()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input. Please enter a number: ";
@@ -32,6 +35,86 @@ void CommandProcessor::addEntity(const std::string &entity) {
 
         addCategory(name, limit);
 
+    } else if (entity == "account") {
+        std::string name;
+        double balance = 0.0;
+        std::cout << "Enter account name: ";
+        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::getline(std::cin, name);
+        std::cout << "Enter initial balance: ";
+        while (!(std::cin >> balance) || balance > std::numeric_limits<double>::max()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+
+        addAccount(name, balance);
+
+    } else if (entity == "transaction") {
+        std::string type;
+        int accountId;
+        int categoryId = 0; // optional
+        double amount;
+        std::string description;
+        std::string date;
+
+        std::cout << "Enter transaction type ('income' or 'expense'): ";
+        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::getline(std::cin, type);
+        getAllAccountsWithBalance();
+        std::cout << "Enter account ID: ";
+        while (!(std::cin >> accountId)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+        getAllCategoriesWithExpenses();
+        std::cout << "Enter category ID (optional, enter 0 if no category): ";
+        while (!(std::cin >> categoryId)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+        std::cout << "Enter amount: ";
+        while (!(std::cin >> amount) || amount > std::numeric_limits<double>::max()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+        std::cout << "Enter description: ";
+        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::getline(std::cin, description);
+        std::cout << "Enter date (DD-MM-YYYY): ";
+        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::getline(std::cin, date);
+
+        addTransaction(type, accountId, categoryId, amount, description, date);
+    } else {
+        std::cerr << "Invalid entity. Please enter 'category', 'account', or 'transaction'.\n";
+        printHelp();
+    }
+}
+
+void CommandProcessor::deleteEntity(const std::string &entity) {
+    int id;
+    if (entity == "category") {
+        getAllCategoriesWithExpenses();
+        std::cout << "Enter category ID to delete: ";
+        while (!(std::cin >> id)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+        deleteCategory(id);
+    } else if (entity == "account") {
+        getAllAccountsWithBalance();
+        std::cout << "Enter account ID to delete: ";
+        while (!(std::cin >> id)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number: ";
+        }
+        deleteAccount(id);
     } else if (entity == "transaction") {
         std::string type;
         int accountId;
@@ -68,7 +151,7 @@ void CommandProcessor::addEntity(const std::string &entity) {
         std::getline(std::cin, description);
         std::cout << "Enter date (DD.MM.YYYY): ";
 
-        // Date validation function
+// Date validation function
         auto isValidDate = [](const std::string &date) {
             std::regex datePattern(R"((\d{2})\.(\d{2})\.(\d{4}))");
             std::smatch match;
@@ -112,42 +195,6 @@ void CommandProcessor::addEntity(const std::string &entity) {
         }
 
         addTransaction(type, accountId, categoryId, amount, description, date);
-    } else {
-        std::cerr << "Invalid entity. Please enter 'category', 'account', or 'transaction'.\n";
-        printHelp();
-    }
-}
-
-void CommandProcessor::deleteEntity(const std::string &entity) {
-    int id;
-    if (entity == "category") {
-        getAllCategoriesWithExpenses();
-        std::cout << "Enter category ID to delete: ";
-        while (!(std::cin >> id)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a number: ";
-        }
-        deleteCategory(id);
-    } else if (entity == "account") {
-        getAllAccountsWithBalance();
-        std::cout << "Enter account ID to delete: ";
-        while (!(std::cin >> id)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a number: ";
-        }
-        deleteAccount(
-                id);  // This method should now also delete all transactions associated with the account and update the category limits
-    } else if (entity == "transaction") {
-        getTransactions("all");
-        std::cout << "Enter transaction ID to delete: ";
-        while (!(std::cin >> id)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a number: ";
-        }
-        deleteTransaction(id);
     } else {
         std::cerr << "Invalid entity. Please enter 'category', 'account', or 'transaction'.\n";
         printHelp();
