@@ -18,10 +18,7 @@ and generate reports on their spending habits.
 - **Budget Setting:** Users can set budget goals for different expense categories (e.g., groceries, utilities,
   entertainment). The application provides alerts when users exceed their set budget limits.
 
-- **Reports Generation:** Coinshen generates comprehensive reports summarizing users' spending habits over specific time
-  periods.
-
-- **Category Management:** Users can create, edit, and delete expense categories according to their preferences and
+- **Category Management:** Users can create, and delete expense categories according to their preferences and
   needs.
 
 ## Building and Running the Application
@@ -33,7 +30,7 @@ This project uses CMake as its build system. To build and run the application, f
    First, clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/coinshen.git
+    git clone git@github.com:Katussska/Coinshen.git
     ```
 
 2. **Navigate to the project directory:**
@@ -41,7 +38,7 @@ This project uses CMake as its build system. To build and run the application, f
    Change your current directory to the project's directory:
 
     ```bash
-    cd coinshen
+    cd Coinshen
     ```
 
 3. **Create a build directory:**
