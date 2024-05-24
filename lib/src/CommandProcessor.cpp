@@ -3,7 +3,6 @@
 //
 
 #include "../include/CommandProcessor.h"
-#include <iostream>
 
 void CommandProcessor::processCommand(const std::string &command, const std::string &entity) {
     if (command == "add") {

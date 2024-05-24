@@ -46,7 +46,7 @@ This project uses CMake as its build system. To build and run the application, f
    Create a new directory named `build`:
 
     ```bash
-    mkdir build
+    mkdir cmake-build-debug
     ```
 
 4. **Navigate to the build directory:**
@@ -54,7 +54,7 @@ This project uses CMake as its build system. To build and run the application, f
    Change your current directory to the `build` directory:
 
     ```bash
-    cd build
+   cd cmake-build-debug
     ```
 
 5. **Run CMake:**
@@ -78,7 +78,7 @@ This project uses CMake as its build system. To build and run the application, f
    After successfully building the project, you can run the application:
 
     ```bash
-    ./Coinshen
+    ./main
     ```
 
 ## License
