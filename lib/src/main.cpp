@@ -1,21 +1,33 @@
-#include "../include/BudgetTracker.h"
+#include "../include/CommandProcessor.h"
 
 int main() {
-
     createSchema();
 
-    //deleteAccount(1);
+    CommandProcessor::printHelp();
 
-    addAccount("mBank", 10000);
+    while (true) {
+        system("clear");
+        std::cout << "Enter command: ";
+        std::string line;
+        std::getline(std::cin, line);
+        std::istringstream iss(line);
+        std::string command, entity;
+        if (!(iss >> command >> entity)) {
+            if (!line.empty()) {
+                std::cerr << "Invalid input. Please enter a command and an entity.\n";
+                std::this_thread::sleep_for(std::chrono::duration<double>(0.1));
+            }
+            continue;
+        }
 
-//    deleteCategory(6);
-//    deleteCategory(7);
+        if (command == "exit")
+            return 0;
 
-    addCategory("fun", 1000);
-    addCategory("gas");
+        if (command == "help")
+            CommandProcessor::printHelp();
 
-//    addTransaction("income", 1, 0, 5000, "paycheck", "20.03.2024");
-//    addTransaction("expense", 1, 1, -150, "pub", "20.03.2024");
+        CommandProcessor::processCommand(command, entity);
 
-    return 0;
+        std::this_thread::sleep_for(std::chrono::duration<double>(0.1));
+    }
 }

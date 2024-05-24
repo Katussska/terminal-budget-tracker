@@ -36,4 +36,21 @@ void editAccount(int id, std::string name, double balance, double moneyChange);
 
 void deleteAccount(int id);
 
+/// Methods for reading data
+void getAllCategoriesWithExpenses();
+
+void getTransactionsByCategoryId(int id);
+
+void getTransactionsByCategoryName(const std::string &name);
+
+void getAllAccountsWithBalance();
+
+void getAccountDetailsById(int id);
+
+void getAccountDetailsByName(const std::string &name);
+
+void getTransactionsByType(const std::string &type);
+
+void getTransactions(const std::string &type);
+
 #endif //PROJECT_BUDGETTRACKER_H

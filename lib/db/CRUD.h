@@ -31,9 +31,25 @@ void updateTransaction(int id, int accountID, int categoryId, double amount, con
                        const std::string &date);
 
 ///READ
-//...
+void readAllCategoriesWithExpenses();
+
+void readTransactionsByCategoryId(int id);
+
+void readTransactionsByCategoryName(const std::string &name);
+
+void readAllAccountsWithBalance();
+
+void readAccountDetailsById(int id);
+
+void readAccountDetailsByName(const std::string &name);
+
+void readTransactionsByType(const std::string &type);
 
 ///DELETE
-void destroyEntity(const std::string &table, int id);
+void destroyAccount(int id);
+
+void destroyTransaction(int id);
+
+void destroyCategory(int id);
 
 #endif //PROJECT_CRUD_H

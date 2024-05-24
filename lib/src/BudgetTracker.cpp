@@ -20,7 +20,7 @@ editTransaction(int id, int accountID = 0, int categoryId = 0, double amount = 0
 }
 
 void deleteTransaction(int id) {
-    destroyEntity("'Transaction'", id);
+    destroyTransaction(id);
 }
 
 /// Methods for managing budget categories
@@ -39,7 +39,7 @@ void editCategory(int id, const std::string &name = "", double budget = 0.0) {
 }
 
 void deleteCategory(int id) {
-    destroyEntity("Category", id);
+    destroyCategory(id);
 }
 
 /// Methods for managing accounts
@@ -53,5 +53,34 @@ void editAccount(int id, const std::string &name = "", double balance = 0.0, dou
 }
 
 void deleteAccount(int id) {
-    destroyEntity("Account", id);
+    destroyAccount(id);
+}
+
+/// Methods for reading data
+void getAllCategoriesWithExpenses() {
+    readAllCategoriesWithExpenses();
+}
+
+void getTransactionsByCategoryId(int id) {
+    readTransactionsByCategoryId(id);
+}
+
+void getTransactionsByCategoryName(const std::string &name) {
+    readTransactionsByCategoryName(name);
+}
+
+void getAllAccountsWithBalance() {
+    readAllAccountsWithBalance();
+}
+
+void getAccountDetailsById(int id) {
+    readAccountDetailsById(id);
+}
+
+void getAccountDetailsByName(const std::string &name) {
+    readAccountDetailsByName(name);
+}
+
+void getTransactions(const std::string &type) {
+    readTransactionsByType(type);
 }

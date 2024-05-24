@@ -15,7 +15,7 @@ bool recordExists(const std::string &tableName, const std::string &recordName) {
 std::string buildInsertQuery(const std::string &tableName, const std::vector<std::string> &columns,
                              const std::vector<std::string> &values) {
     if (columns.size() != values.size() || columns.empty())
-        throw std::invalid_argument("Columns and values must have the same size and cannot be empty.");
+        throw std::invalid_argument("Columns and values must have the same size and cannot be empty.\n");
 
     std::stringstream queryBuilder;
 
@@ -45,7 +45,7 @@ void insertRecord(const std::string &tableName, const std::vector<std::string> &
     std::string queryStr = buildInsertQuery(tableName, columns, values);
     try {
         db->exec(queryStr);
-        std::cout << "Record inserted successfully into table '" << tableName << "'." << std::endl;
+        std::cout << "Record inserted successfully into table '" << tableName << "'.\n" << std::endl;
     } catch (SQLite::Exception &e) {
         std::cerr << "Failed to insert record into table '" << tableName << "'. Error: " << e.what() << std::endl;
     }
@@ -60,7 +60,7 @@ void createSchema() {
     std::ifstream schemaFile("../lib/db/schema.sql");
     if (!schemaFile.is_open()) {
         std::cerr << "Error opening schema file." << std::endl;
-        throw std::runtime_error("Error opening schema file");
+        throw std::runtime_error("Error opening schema file\n");
     }
 
     std::string schemaSql((std::istreambuf_iterator<char>(schemaFile)),
@@ -68,16 +68,17 @@ void createSchema() {
 
     try {
         db->exec(schemaSql);
-        std::cout << "Schema created successfully." << std::endl;
+        std::cout << "Schema created successfully.\n" << std::endl;
     } catch (SQLite::Exception &e) {
         std::cerr << "Error executing SQL commands: " << e.what() << std::endl;
-        throw std::runtime_error("Error executing SQL commands");
+        throw std::runtime_error("Error executing SQL commands"
+        );
     }
 }
 
 void createCategory(const Category &category) {
     if (recordExists("Category", category.getName())) {
-        std::cerr << "Category with the same name already exists." << std::endl;
+        std::cerr << "Category with the same name already exists.\n" << std::endl;
         return;
     }
 
@@ -90,7 +91,7 @@ void createCategory(const Category &category) {
 
 void createAccount(const Account &account) {
     if (recordExists("Account", account.getName())) {
-        std::cerr << "Account with the same name already exists." << std::endl;
+        std::cerr << "Account with the same name already exists.\n" << std::endl;
         return;
     }
 
@@ -103,14 +104,18 @@ void createAccount(const Account &account) {
 void createTransaction(const std::string &type, int accountID, int categoryId,
                        const Transaction &transaction) {
     std::vector<std::string> columns = {"type", "amount", "description", "category_id", "account_id", "date"};
-    std::vector<std::string> values = {type, std::to_string(transaction.getAmount()), transaction.getDescription(),
+    double amount = transaction.getAmount();
+    if (type == "expense") {
+        amount = -amount;  // Convert the amount to negative for expense transactions
+    }
+    std::vector<std::string> values = {type, std::to_string(amount), transaction.getDescription(),
                                        (categoryId != 0) ? std::to_string(categoryId) : "NULL",
                                        std::to_string(accountID), transaction.getDate()};
 
     insertRecord("'Transaction'", columns, values);
 
     if (type == "Income") {
-        std::cout << "Income was added." << std::endl;
+        std::cout << "Income was added.\n" << std::endl;
         updateAccount(accountID, "", 0, transaction.getAmount());
     } else {
         std::cout << "Expense was added." << std::endl;
@@ -124,7 +129,8 @@ void createTransaction(const std::string &type, int accountID, int categoryId,
         double balance = 0;
         std::string name{};
 
-        updateAccount(accountID, name, balance, transaction.getAmount());
+        updateAccount(accountID, name, balance,
+                      -transaction.getAmount());  // Subtract the transaction amount from the account balance
     }
 }
 
@@ -136,9 +142,9 @@ void updateCategory(int id, const std::string &name, double budget) {
         nameQuery->bind(1, name);
         nameQuery->bind(2, id);
         if (nameQuery->exec())
-            std::cout << "Edited category with id '" << id << "'. (name)" << std::endl;
+            std::cout << "Edited category with id '" << id << "'. (name)\n" << std::endl;
         else
-            std::cerr << "Editing category with id '" << id << "' unsuccessful.(name)" << std::endl;
+            std::cerr << "Editing category with id '" << id << "' unsuccessful.(name)\n" << std::endl;
     }
 
     if (budget != 0.0) {
@@ -147,9 +153,9 @@ void updateCategory(int id, const std::string &name, double budget) {
         updateQuery->bind(1, budget);
         updateQuery->bind(2, id);
         if (updateQuery->exec())
-            std::cout << "Edited category with id '" << id << "'. (budget)" << std::endl;
+            std::cout << "Edited category with id '" << id << "'. (budget)\n" << std::endl;
         else
-            std::cerr << "Editing category with id '" << id << "' unsuccessful.(budget)" << std::endl;
+            std::cerr << "Editing category with id '" << id << "' unsuccessful.(budget)\n" << std::endl;
     }
 
     StatementPtr checkQuery(
@@ -165,9 +171,9 @@ void updateCategory(int id, const std::string &name, double budget) {
     double budgetAmount = budgetQuery->getColumn(0).getDouble();
 
     if (sum < budgetAmount)
-        std::cout << "Remaining category's budget is '" << budgetAmount - sum << "' dollars." << std::endl;
+        std::cout << "Remaining category's budget is '" << budgetAmount - sum << "' dollars.\n" << std::endl;
     else
-        std::cerr << "Category exceeded the budget by '" << sum - budgetAmount << "' dollars." << std::endl;
+        std::cerr << "Category exceeded the budget by '" << sum - budgetAmount << "' dollars.\n" << std::endl;
 }
 
 void updateAccount(int id, const std::string &name, double balance, double moneyChange) {
@@ -177,9 +183,9 @@ void updateAccount(int id, const std::string &name, double balance, double money
         nameQuery->bind(2, id);
 
         if (nameQuery->exec())
-            std::cout << "Edited account with id '" << id << "'. (name)" << std::endl;
+            std::cout << "Edited account with id '" << id << "'. (name)\n" << std::endl;
         else
-            std::cerr << "Editing account with id '" << id << "' unsuccessful.(name)" << std::endl;
+            std::cerr << "Editing account with id '" << id << "' unsuccessful.(name)\n" << std::endl;
     }
 
     if (balance != 0.0) {
@@ -188,9 +194,9 @@ void updateAccount(int id, const std::string &name, double balance, double money
         balanceQuery->bind(2, id);
 
         if (balanceQuery->exec())
-            std::cout << "Edited account with id '" << id << "'. (balance)" << std::endl;
+            std::cout << "Edited account with id '" << id << "'. (balance)\n" << std::endl;
         else
-            std::cerr << "Editing account with id '" << id << "' unsuccessful.(balance)" << std::endl;
+            std::cerr << "Editing account with id '" << id << "' unsuccessful.(balance)\n" << std::endl;
     }
 
     StatementPtr budgetQuery(new SQLite::Statement(*db, "SELECT balance FROM Account WHERE id = ?"));
@@ -206,9 +212,9 @@ void updateAccount(int id, const std::string &name, double balance, double money
         changeQuery->bind(2, id);
 
         if (changeQuery->exec())
-            std::cout << "Edited account with id '" << id << "'. (balance)" << std::endl;
+            std::cout << "Edited account with id '" << id << "'. (balance)\n" << std::endl;
         else
-            std::cerr << "Editing account with id '" << id << "' unsuccessful.(balance)" << std::endl;
+            std::cerr << "Editing account with id '" << id << "' unsuccessful.(balance)\n" << std::endl;
     }
 
     if ((balanceAmount + moneyChange) < 0)
@@ -242,27 +248,309 @@ updateTransaction(int id, int accountID, int categoryId, double amount, const st
         query->bind(2, id);
 
         if (query->exec())
-            std::cout << "Edited transaction with id '" << id << "'. " << message << std::endl;
+            std::cout << "Edited transaction with id '" << id << "'. \n" << message << std::endl;
         else
-            std::cerr << "Editing transaction with id '" << id << "' unsuccessful. " << message << std::endl;
+            std::cerr << "Editing transaction with id '" << id << "' unsuccessful. \n" << message << std::endl;
     }
 }
 
 ///READ
-//Funkce načítání filtrovaných transakcí:
-//Funkce načítání dostupných účtů a kategorií:
-//Funkce načítání typů transakcí:
-//Funkce načítání dat o transakcích na základě ID:
+void readAllCategoriesWithExpenses() {
+    std::string queryStr = "SELECT Category.id, Category.name, COALESCE(SUM(`Transaction`.amount), 0) as total_expense "
+                           "FROM Category LEFT JOIN `Transaction` ON Category.id = `Transaction`.category_id "
+                           "GROUP BY Category.id";
+    SQLite::Statement query(*db, queryStr);
 
+    bool found = false;
+    while (query.executeStep()) {
+        found = true;
+        std::cout << "-------------------------\n";
+        std::cout << "Category ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Name: " << query.getColumn("name").getText() << "\n";
+        std::cout << "Total Expense: " << query.getColumn("total_expense").getDouble() << "\n";
+        std::cout << "-------------------------\n";
+    }
+
+    if (!found) {
+        std::cerr << "No categories found in the database.\n";
+    }
+}
+
+void readTransactionsByCategoryId(int id) {
+    std::string queryStr = "SELECT * FROM 'Transaction' WHERE category_id = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, id);
+
+    bool found = false;
+    while (query.executeStep()) {
+        found = true;
+        std::cout << "-------------------------\n";
+        std::cout << "Transaction ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Type: " << query.getColumn("type").getText() << "\n";
+        std::cout << "Amount: " << query.getColumn("amount").getDouble() << "\n";
+        std::cout << "Description: " << query.getColumn("description").getText() << "\n";
+        std::cout << "Category ID: " << query.getColumn("category_id").getInt() << "\n";
+        std::cout << "Account ID: " << query.getColumn("account_id").getInt() << "\n";
+        std::cout << "Date: " << query.getColumn("date").getText() << "\n";
+        std::cout << "-------------------------\n";
+    }
+
+    if (!found) {
+        std::cerr << "No transactions found for category ID " << id << "\n";
+    }
+}
+
+void readTransactionsByCategoryName(const std::string &name) {
+    std::string queryStr = "SELECT Transaction.* FROM 'Transaction' "
+                           "JOIN Category ON Transaction.category_id = Category.id "
+                           "WHERE Category.name = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, name);
+
+    bool found = false;
+    while (query.executeStep()) {
+        found = true;
+        std::cout << "-------------------------\n";
+        std::cout << "Transaction ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Type: " << query.getColumn("type").getText() << "\n";
+        std::cout << "Amount: " << query.getColumn("amount").getDouble() << "\n";
+        std::cout << "Description: " << query.getColumn("description").getText() << "\n";
+        std::cout << "Category ID: " << query.getColumn("category_id").getInt() << "\n";
+        std::cout << "Account ID: " << query.getColumn("account_id").getInt() << "\n";
+        std::cout << "Date: " << query.getColumn("date").getText() << "\n";
+        std::cout << "-------------------------\n";
+    }
+
+    if (!found) {
+        std::cerr << "No transactions found for category name " << name << "\n";
+    }
+}
+
+void readAllAccountsWithBalance() {
+    std::string queryStr = "SELECT id, name, balance FROM Account";
+    SQLite::Statement query(*db, queryStr);
+
+    while (query.executeStep()) {
+        std::cout << "-------------------------\n";
+        std::cout << "Account ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Name: " << query.getColumn("name").getText() << "\n";
+        std::cout << "Balance: " << query.getColumn("balance").getDouble() << "\n";
+        std::cout << "-------------------------\n";
+    }
+}
+
+void readAccountDetailsById(int id) {
+    std::string queryStr = "SELECT * FROM Account WHERE id = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, id);
+
+    if (query.executeStep()) {
+        std::cout << "-------------------------\n";
+        std::cout << "Account ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Name: " << query.getColumn("name").getText() << "\n";
+        std::cout << "Balance: " << query.getColumn("balance").getDouble() << "\n";
+    } else {
+        std::cerr << "No account found with ID " << id << "\n";
+        return;
+    }
+
+    queryStr = "SELECT * FROM 'Transaction' WHERE account_id = ?";
+    SQLite::Statement transactionQuery(*db, queryStr);
+    transactionQuery.bind(1, id);
+
+    while (transactionQuery.executeStep()) {
+        std::cout << "-------------------------\n";
+        std::cout << "Transaction ID: " << transactionQuery.getColumn("id").getInt() << "\n";
+        std::cout << "Type: " << transactionQuery.getColumn("type").getText() << "\n";
+        std::cout << "Amount: " << transactionQuery.getColumn("amount").getDouble() << "\n";
+        std::cout << "Description: " << transactionQuery.getColumn("description").getText() << "\n";
+        std::cout << "Category ID: " << transactionQuery.getColumn("category_id").getInt() << "\n";
+        std::cout << "Account ID: " << transactionQuery.getColumn("account_id").getInt() << "\n";
+        std::cout << "Date: " << transactionQuery.getColumn("date").getText() << "\n";
+        std::cout << "-------------------------\n";
+    }
+}
+
+void readAccountDetailsByName(const std::string &name) {
+    std::string queryStr = "SELECT * FROM Account WHERE name = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, name);
+
+    if (query.executeStep()) {
+        std::cout << "-------------------------\n";
+        std::cout << "Account ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Name: " << query.getColumn("name").getText() << "\n";
+        std::cout << "Balance: " << query.getColumn("balance").getDouble() << "\n";
+    } else {
+        std::cerr << "No account found with name " << name << "\n";
+        return;
+    }
+
+    int accountId = query.getColumn("id").getInt();
+
+    queryStr = "SELECT * FROM 'Transaction' WHERE account_id = ?";
+    SQLite::Statement transactionQuery(*db, queryStr);
+    transactionQuery.bind(1, accountId);
+
+    while (transactionQuery.executeStep()) {
+        std::cout << "-------------------------\n";
+        std::cout << "Transaction ID: " << transactionQuery.getColumn("id").getInt() << "\n";
+        std::cout << "Type: " << transactionQuery.getColumn("type").getText() << "\n";
+        std::cout << "Amount: " << transactionQuery.getColumn("amount").getDouble() << "\n";
+        std::cout << "Description: " << transactionQuery.getColumn("description").getText() << "\n";
+        std::cout << "Category ID: " << transactionQuery.getColumn("category_id").getInt() << "\n";
+        std::cout << "Account ID: " << transactionQuery.getColumn("account_id").getInt() << "\n";
+        std::cout << "Date: " << transactionQuery.getColumn("date").getText() << "\n";
+        std::cout << "-------------------------\n";
+    }
+}
+
+void readTransactionsByType(const std::string &type) {
+    std::string queryStr;
+    if (type == "all") {
+        queryStr = "SELECT * FROM 'Transaction'";
+    } else {
+        queryStr = "SELECT * FROM 'Transaction' WHERE type = ?";
+    }
+
+    SQLite::Statement query(*db, queryStr);
+
+    if (type != "all") {
+        query.bind(1, type);
+    }
+
+    bool found = false;
+    while (query.executeStep()) {
+        found = true;
+        std::cout << "-------------------------\n";
+        std::cout << "Transaction ID: " << query.getColumn("id").getInt() << "\n";
+        std::cout << "Type: " << query.getColumn("type").getText() << "\n";
+        std::cout << "Amount: " << query.getColumn("amount").getDouble() << "\n";
+        std::cout << "Description: " << query.getColumn("description").getText() << "\n";
+        std::cout << "Category ID: " << query.getColumn("category_id").getInt() << "\n";
+        std::cout << "Account ID: " << query.getColumn("account_id").getInt() << "\n";
+        std::cout << "Date: " << query.getColumn("date").getText() << "\n";
+        std::cout << "-------------------------\n";
+    }
+
+    if (!found) {
+        std::cerr << "No transactions found\n";
+    }
+}
 
 ///DELETE
-void destroyEntity(const std::string &table, int id) {
-    std::string queryStr = "DELETE FROM " + table + " WHERE id = ?";
-    StatementPtr query(new SQLite::Statement(*db, queryStr.c_str()));
-    query->bind(1, id);
+void destroyAccount(int id) {
+    // Get all transactions associated with the account
+    std::string queryStr = "SELECT * FROM 'Transaction' WHERE account_id = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, id);
 
-    if (query->exec())
-        std::cout << table << " with ID '" << id << "' deleted successfully." << std::endl;
-    else
-        std::cerr << table << " ID '" << id << "' not found." << std::endl;
+    // For each transaction, update the category limit if it exists
+    while (query.executeStep()) {
+        int categoryId = query.getColumn("category_id").getInt();
+        double amount = query.getColumn("amount").getDouble();
+
+        if (categoryId != 0) {
+            // Get the current budget and budgetSet of the category
+            std::string categoryQueryStr = "SELECT budget, budgetSet FROM Category WHERE id = ?";
+            SQLite::Statement categoryQuery(*db, categoryQueryStr);
+            categoryQuery.bind(1, categoryId);
+
+            if (categoryQuery.executeStep()) {
+                double currentBudget = categoryQuery.getColumn("budget").getDouble();
+                int budgetSet = categoryQuery.getColumn("budgetSet").getInt();
+
+                // Update the category budget only if budgetSet is 1
+                if (budgetSet == 1) {
+                    std::string updateQueryStr = "UPDATE Category SET budget = ? WHERE id = ?";
+                    SQLite::Statement updateQuery(*db, updateQueryStr);
+                    updateQuery.bind(1, currentBudget + amount);
+                    updateQuery.bind(2, categoryId);
+                    updateQuery.exec();
+                }
+            }
+        }
+
+        // Delete the transaction
+        std::string deleteQueryStr = "DELETE FROM 'Transaction' WHERE id = ?";
+        SQLite::Statement deleteQuery(*db, deleteQueryStr);
+        deleteQuery.bind(1, query.getColumn("id").getInt());
+        deleteQuery.exec();
+    }
+
+    // Delete the account
+    std::string deleteAccountQueryStr = "DELETE FROM Account WHERE id = ?";
+    SQLite::Statement deleteAccountQuery(*db, deleteAccountQueryStr);
+    deleteAccountQuery.bind(1, id);
+    deleteAccountQuery.exec();
+}
+
+void destroyTransaction(int id) {
+    // Get the transaction details
+    std::string queryStr = "SELECT * FROM 'Transaction' WHERE id = ?";
+    SQLite::Statement query(*db, queryStr);
+    query.bind(1, id);
+
+    if (query.executeStep()) {
+        int accountId = query.getColumn("account_id").getInt();
+        int categoryId = query.getColumn("category_id").getInt();
+        double amount = query.getColumn("amount").getDouble();
+
+        // Update the account balance
+        std::string accountQueryStr = "SELECT balance FROM Account WHERE id = ?";
+        SQLite::Statement accountQuery(*db, accountQueryStr);
+        accountQuery.bind(1, accountId);
+
+        if (accountQuery.executeStep()) {
+            double currentBalance = accountQuery.getColumn("balance").getDouble();
+            std::string updateAccountQueryStr = "UPDATE Account SET balance = ? WHERE id = ?";
+            SQLite::Statement updateAccountQuery(*db, updateAccountQueryStr);
+            updateAccountQuery.bind(1, currentBalance + amount);
+            updateAccountQuery.bind(2, accountId);
+            updateAccountQuery.exec();
+        }
+
+        // Update the category budget if it exists
+        if (categoryId != 0) {
+            std::string categoryQueryStr = "SELECT budget, budgetSet FROM Category WHERE id = ?";
+            SQLite::Statement categoryQuery(*db, categoryQueryStr);
+            categoryQuery.bind(1, categoryId);
+
+            if (categoryQuery.executeStep()) {
+                double currentBudget = categoryQuery.getColumn("budget").getDouble();
+                int budgetSet = categoryQuery.getColumn("budgetSet").getInt();
+
+                // Update the category budget only if budgetSet is 1
+                if (budgetSet == 1) {
+                    std::string updateCategoryQueryStr = "UPDATE Category SET budget = ? WHERE id = ?";
+                    SQLite::Statement updateCategoryQuery(*db, updateCategoryQueryStr);
+                    updateCategoryQuery.bind(1, currentBudget + amount);
+                    updateCategoryQuery.bind(2, categoryId);
+                    updateCategoryQuery.exec();
+                }
+            }
+        }
+
+        // Delete the transaction
+        std::string deleteQueryStr = "DELETE FROM 'Transaction' WHERE id = ?";
+        SQLite::Statement deleteQuery(*db, deleteQueryStr);
+        deleteQuery.bind(1, id);
+        deleteQuery.exec();
+    } else {
+        std::cerr << "Transaction ID '" << id << "' not found." << std::endl;
+    }
+}
+
+void destroyCategory(int id) {
+    // Set category_id to NULL for all transactions associated with the category
+    std::string updateQueryStr = "UPDATE 'Transaction' SET category_id = NULL WHERE category_id = ?";
+    SQLite::Statement updateQuery(*db, updateQueryStr);
+    updateQuery.bind(1, id);
+    updateQuery.exec();
+
+    // Delete the category
+    std::string deleteQueryStr = "DELETE FROM Category WHERE id = ?";
+    SQLite::Statement deleteQuery(*db, deleteQueryStr);
+    deleteQuery.bind(1, id);
+    deleteQuery.exec();
 }
