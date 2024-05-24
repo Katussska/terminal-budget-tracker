@@ -33,15 +33,31 @@ This project uses CMake as its build system. To build and run the application, f
     git clone git@github.com:Katussska/Coinshen.git
     ```
 
-2. **Navigate to the project directory:**
+2. **Navigate to the deps directory:**
 
-   Change your current directory to the project's directory:
+   Change your current directory to the `lib/deps` directory:
 
     ```bash
-    cd Coinshen
+    cd Coinshen/lib/deps
     ```
 
-3. **Create a build directory:**
+3. **Clone the SQLiteCpp repository:**
+
+   Clone the SQLiteCpp repository into the `deps` directory:
+
+    ```bash
+    git clone git@github.com:SRombauts/SQLiteCpp.git SQLiteCpp
+    ```
+
+4. **Navigate back to the project directory:**
+
+   Change your current directory back to the project's directory:
+
+    ```bash
+    cd ../..
+    ```
+
+5. **Create a build directory:**
 
    Create a new directory named `cmake-build-debug`:
 
@@ -49,7 +65,7 @@ This project uses CMake as its build system. To build and run the application, f
     mkdir cmake-build-debug
     ```
 
-4. **Navigate to the build directory:**
+6. **Navigate to the build directory:**
 
    Change your current directory to the `cmake-build-debug` directory:
 
@@ -57,7 +73,7 @@ This project uses CMake as its build system. To build and run the application, f
    cd cmake-build-debug
     ```
 
-5. **Run CMake:**
+7. **Run CMake:**
 
    Run the `cmake` command to generate the Makefile:
 
@@ -65,7 +81,7 @@ This project uses CMake as its build system. To build and run the application, f
     cmake ..
     ```
 
-6. **Build the project:**
+8. **Build the project:**
 
    Build the project using the `make` command:
 
@@ -73,7 +89,7 @@ This project uses CMake as its build system. To build and run the application, f
     make
     ```
 
-7. **Run the application:**
+9. **Run the application:**
 
    After successfully building the project, you can run the application:
 

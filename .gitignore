@@ -12,6 +12,7 @@
 # Ignore SQLite database files
 *.db
 /db/database.db
+/deps/SQLiteCpp/
 
 # Ignore SQLiteCpp submodule build directory
 /SQLiteCpp/build
