@@ -41,15 +41,32 @@ This project uses CMake as its build system. To build and run the application, f
     cd Coinshen
     ```
 
-3. **Create a build directory:**
+3. **Clone the SQLiteCpp repository:**
 
-   Create a new directory named `build
+   Navigate to the `lib/deps` directory and clone the SQLiteCpp repository:
+
+    ```bash
+    cd lib/deps
+    git clone git@github.com:SRombauts/SQLiteCpp.git
+    ```
+
+4. **Return to the project root directory:**
+
+   Navigate back to the project root directory:
+
+    ```bash
+    cd ../..
+    ```
+
+5. **Create a build directory:**
+
+   Create a new directory named `build`:
 
     ```bash
     mkdir build
     ```
 
-4. **Navigate to the build directory:**
+6. **Navigate to the build directory:**
 
    Change your current directory to the `build` directory:
 
@@ -57,7 +74,7 @@ This project uses CMake as its build system. To build and run the application, f
    cd build
     ```
 
-5. **Run CMake:**
+7. **Run CMake:**
 
    Run the `cmake` command to generate the Makefile:
 
@@ -65,7 +82,7 @@ This project uses CMake as its build system. To build and run the application, f
     cmake ..
     ```
 
-6. **Build the project:**
+8. **Build the project:**
 
    Build the project using the `make` command:
 
@@ -73,7 +90,7 @@ This project uses CMake as its build system. To build and run the application, f
     make
     ```
 
-7. **Run the application:**
+9. **Run the application:**
 
    After successfully building the project, you can run the application:
 
