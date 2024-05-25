@@ -43,18 +43,18 @@ This project uses CMake as its build system. To build and run the application, f
 
 3. **Create a build directory:**
 
-   Create a new directory named `cmake-build-debug`:
+   Create a new directory named `build
 
     ```bash
-    mkdir cmake-build-debug
+    mkdir build
     ```
 
 4. **Navigate to the build directory:**
 
-   Change your current directory to the `cmake-build-debug` directory:
+   Change your current directory to the `build` directory:
 
     ```bash
-   cd cmake-build-debug
+   cd build
     ```
 
 5. **Run CMake:**
