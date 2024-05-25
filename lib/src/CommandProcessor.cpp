@@ -23,7 +23,7 @@ void CommandProcessor::addEntity(const std::string &entity) {
         std::string name;
         double limit = 0.0;
         std::cout << "Enter category name: ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, name);
         std::cout << "Enter category limit (optional, enter 0 if no limit): ";
         while (!(std::cin >> limit) || limit > std::numeric_limits<double>::max()) {
@@ -38,7 +38,7 @@ void CommandProcessor::addEntity(const std::string &entity) {
         std::string name;
         double balance = 0.0;
         std::cout << "Enter account name: ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, name);
         std::cout << "Enter initial balance: ";
         while (!(std::cin >> balance) || balance > std::numeric_limits<double>::max()) {
@@ -58,7 +58,7 @@ void CommandProcessor::addEntity(const std::string &entity) {
         std::string date;
 
         std::cout << "Enter transaction type ('income' or 'expense'): ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, type);
         getAllAccountsWithBalance();
         std::cout << "Enter account ID: ";
@@ -81,10 +81,10 @@ void CommandProcessor::addEntity(const std::string &entity) {
             std::cout << "Invalid input. Please enter a number: ";
         }
         std::cout << "Enter description: ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, description);
         std::cout << "Enter date (DD-MM-YYYY): ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, date);
 
         addTransaction(type, accountId, categoryId, amount, description, date);
@@ -123,7 +123,7 @@ void CommandProcessor::deleteEntity(const std::string &entity) {
         std::string date;
 
         std::cout << "Enter transaction type ('income' or 'expense'): ";
-        std::cin.ignore();  // Ignore the newline character in the input buffer
+        std::cin.ignore();
         std::getline(std::cin, type);
         getAllAccountsWithBalance();
         std::cout << "Enter account ID: ";
@@ -150,7 +150,6 @@ void CommandProcessor::deleteEntity(const std::string &entity) {
         std::getline(std::cin, description);
         std::cout << "Enter date (DD.MM.YYYY): ";
 
-// Date validation function
         auto isValidDate = [](const std::string &date) {
             std::regex datePattern(R"((\d{2})\.(\d{2})\.(\d{4}))");
             std::smatch match;

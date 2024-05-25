@@ -6,7 +6,6 @@
 #define COMMAND_PROCESSOR_H
 
 #include "BudgetTracker.h"
-#include <string>
 
 class CommandProcessor {
 public:

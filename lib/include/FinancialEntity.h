@@ -42,9 +42,7 @@ public:
         return formattedName;
     }
 
-//    void setName(const std::string &newName) {
-//        name = newName;
-//    }
+
 
     [[nodiscard]] double getBudget() const {
         if (budgetSet)
@@ -57,11 +55,6 @@ public:
     [[nodiscard]] bool isBudgetSet() const {
         return budgetSet;
     }
-//
-//    void setBudget(double newBudget) {
-//        budget = newBudget;
-//        budgetSet = true;
-//    }
 };
 
 class Account {
@@ -80,33 +73,9 @@ public:
         return formattedName;
     }
 
-//    void setName(const std::string &newName) {
-//        name = newName;
-//    }
-
     [[nodiscard]] double getBalance() const {
         return balance;
     }
-
-//    void setBalance(double newBalance) {
-//        balance = newBalance;
-//    }
-//
-//    void deposit(double amount) {
-//        if (amount <= 0)
-//            std::cout << "Deposit must be at least 1 dollar";
-//        else
-//            balance += amount;
-//    }
-//
-//    void deposit(double amount, Account *account) {// Transaction from another account
-//        account->withdraw(amount);
-//        balance += amount;
-//    }
-//
-//    void withdraw(double amount) {
-//        balance -= amount;
-//    }
 };
 
 #endif //PROJECT_FINANCIALENTITY_H

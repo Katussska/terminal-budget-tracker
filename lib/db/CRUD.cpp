@@ -106,7 +106,7 @@ void createTransaction(const std::string &type, int accountID, int categoryId,
     std::vector<std::string> columns = {"type", "amount", "description", "category_id", "account_id", "date"};
     double amount = transaction.getAmount();
     if (type == "expense") {
-        amount = -amount;  // Convert the amount to negative for expense transactions
+        amount = -amount;
     }
     std::vector<std::string> values = {type, std::to_string(amount), transaction.getDescription(),
                                        (categoryId != 0) ? std::to_string(categoryId) : "NULL",
@@ -130,7 +130,7 @@ void createTransaction(const std::string &type, int accountID, int categoryId,
         std::string name{};
 
         updateAccount(accountID, name, balance,
-                      -transaction.getAmount());  // Subtract the transaction amount from the account balance
+                      -transaction.getAmount());
     }
 }
 
@@ -440,18 +440,15 @@ void readTransactionsByType(const std::string &type) {
 
 ///DELETE
 void destroyAccount(int id) {
-    // Get all transactions associated with the account
     std::string queryStr = "SELECT * FROM 'Transaction' WHERE account_id = ?";
     SQLite::Statement query(*db, queryStr);
     query.bind(1, id);
 
-    // For each transaction, update the category limit if it exists
     while (query.executeStep()) {
         int categoryId = query.getColumn("category_id").getInt();
         double amount = query.getColumn("amount").getDouble();
 
         if (categoryId != 0) {
-            // Get the current budget and budgetSet of the category
             std::string categoryQueryStr = "SELECT budget, budgetSet FROM Category WHERE id = ?";
             SQLite::Statement categoryQuery(*db, categoryQueryStr);
             categoryQuery.bind(1, categoryId);
@@ -460,7 +457,6 @@ void destroyAccount(int id) {
                 double currentBudget = categoryQuery.getColumn("budget").getDouble();
                 int budgetSet = categoryQuery.getColumn("budgetSet").getInt();
 
-                // Update the category budget only if budgetSet is 1
                 if (budgetSet == 1) {
                     std::string updateQueryStr = "UPDATE Category SET budget = ? WHERE id = ?";
                     SQLite::Statement updateQuery(*db, updateQueryStr);
@@ -471,14 +467,12 @@ void destroyAccount(int id) {
             }
         }
 
-        // Delete the transaction
         std::string deleteQueryStr = "DELETE FROM 'Transaction' WHERE id = ?";
         SQLite::Statement deleteQuery(*db, deleteQueryStr);
         deleteQuery.bind(1, query.getColumn("id").getInt());
         deleteQuery.exec();
     }
 
-    // Delete the account
     std::string deleteAccountQueryStr = "DELETE FROM Account WHERE id = ?";
     SQLite::Statement deleteAccountQuery(*db, deleteAccountQueryStr);
     deleteAccountQuery.bind(1, id);
@@ -486,7 +480,6 @@ void destroyAccount(int id) {
 }
 
 void destroyTransaction(int id) {
-    // Get the transaction details
     std::string queryStr = "SELECT * FROM 'Transaction' WHERE id = ?";
     SQLite::Statement query(*db, queryStr);
     query.bind(1, id);
@@ -496,7 +489,6 @@ void destroyTransaction(int id) {
         int categoryId = query.getColumn("category_id").getInt();
         double amount = query.getColumn("amount").getDouble();
 
-        // Update the account balance
         std::string accountQueryStr = "SELECT balance FROM Account WHERE id = ?";
         SQLite::Statement accountQuery(*db, accountQueryStr);
         accountQuery.bind(1, accountId);
@@ -510,7 +502,6 @@ void destroyTransaction(int id) {
             updateAccountQuery.exec();
         }
 
-        // Update the category budget if it exists
         if (categoryId != 0) {
             std::string categoryQueryStr = "SELECT budget, budgetSet FROM Category WHERE id = ?";
             SQLite::Statement categoryQuery(*db, categoryQueryStr);
@@ -520,7 +511,6 @@ void destroyTransaction(int id) {
                 double currentBudget = categoryQuery.getColumn("budget").getDouble();
                 int budgetSet = categoryQuery.getColumn("budgetSet").getInt();
 
-                // Update the category budget only if budgetSet is 1
                 if (budgetSet == 1) {
                     std::string updateCategoryQueryStr = "UPDATE Category SET budget = ? WHERE id = ?";
                     SQLite::Statement updateCategoryQuery(*db, updateCategoryQueryStr);
@@ -531,7 +521,6 @@ void destroyTransaction(int id) {
             }
         }
 
-        // Delete the transaction
         std::string deleteQueryStr = "DELETE FROM 'Transaction' WHERE id = ?";
         SQLite::Statement deleteQuery(*db, deleteQueryStr);
         deleteQuery.bind(1, id);
@@ -542,13 +531,11 @@ void destroyTransaction(int id) {
 }
 
 void destroyCategory(int id) {
-    // Set category_id to NULL for all transactions associated with the category
     std::string updateQueryStr = "UPDATE 'Transaction' SET category_id = NULL WHERE category_id = ?";
     SQLite::Statement updateQuery(*db, updateQueryStr);
     updateQuery.bind(1, id);
     updateQuery.exec();
 
-    // Delete the category
     std::string deleteQueryStr = "DELETE FROM Category WHERE id = ?";
     SQLite::Statement deleteQuery(*db, deleteQueryStr);
     deleteQuery.bind(1, id);
