@@ -46,7 +46,9 @@ This project uses CMake as its build system. To build and run the application, f
    Navigate to the `lib/deps` directory and clone the SQLiteCpp repository:
 
     ```bash
-    cd lib/deps
+    cd lib
+    mkdir deps
+    cd deps
     git clone git@github.com:SRombauts/SQLiteCpp.git
     ```
 
