@@ -1,4 +1,4 @@
-# Coinshen - Budget Tracking Console Application (!in progress!)
+# Coinshen - Budget Tracking Console Application
 
 Coinshen is a budget tracking console application developed as a school project. The name "Coinshen" is inspired by
 Caishen, the Chinese god of wealth and prosperity. The application helps users manage their expenses, set budget goals,
